@@ -14,19 +14,19 @@ const DemoVideoModal: React.FC<DemoVideoModalProps> = ({
 }) => {
   const [isMobile, setIsMobile] = useState(false);
 
-  // Check screen size
+  
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
 
-    // Check initial screen size
+    
     checkMobile();
 
-    // Add event listener to check screen size on resize
+    
     window.addEventListener('resize', checkMobile);
 
-    // Cleanup event listener
+    
     return () => {
       window.removeEventListener('resize', checkMobile);
     };
@@ -85,7 +85,7 @@ const DemoVideoModal: React.FC<DemoVideoModalProps> = ({
             <iframe 
               width="100%" 
               height="315" 
-              src="https://www.youtube.com/embed/example" 
+              src="https://www.youtube.com/watch?v=VEQd-jmVs44&pp=ygUnZGVtbyBvZiBjeWJlcnNlY3VyaXR5IGF3YXJlbmVzcyB3ZWJzaXRl" 
               title="Demo Video" 
               frameBorder="0" 
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 

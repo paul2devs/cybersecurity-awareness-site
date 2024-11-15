@@ -106,13 +106,13 @@ export interface Course {
   prerequisites?: string[];
   image: string;
   externalLink: string;
-  available: boolean; // Make it required
+  available: boolean; 
 }
 export interface AssessmentQuestion {
   id: string;
   question: string;
   options: string[];
-  difficulty?: 'easy' | 'medium' | 'hard'; // Add optional difficulty
+  difficulty?: 'easy' | 'medium' | 'hard'; 
 }
 
 export interface AssessmentResult {

@@ -47,20 +47,20 @@ const ICON_MAP = {
 export default function CourseCard({ course }: { course: Course }) {
   const router = useRouter();
 
-  // Select icon based on first tag
+ 
   const PrimaryTag = ICON_MAP[course.tags[0] as keyof typeof ICON_MAP] || BookOpen;
   
-  // Get level-specific colors
+  
   const levelColors = LEVEL_COLORS[course.level];
 
-  // Handle course start navigation
+  
   const handleCourseStart = () => {
     if (course.available) {
-      // Prioritize external link if available
+      
       if (course.externalLink) {
         window.open(course.externalLink, '_blank', 'noopener,noreferrer');
       } else {
-        // Fallback to internal course page
+        
         router.push(`/courses/${course.id}`);
       }
     }

@@ -30,7 +30,7 @@ export default function Navigation() {
   const [backgroundIndex, setBackgroundIndex] = useState(0);
   const pathname = usePathname();
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+  
   const links = [
     { href: '/', label: 'Home' },
     { href: '/threat', label: 'Threats' },

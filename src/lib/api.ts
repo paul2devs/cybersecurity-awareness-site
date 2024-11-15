@@ -2,7 +2,7 @@ import { NewsItem, AssessmentResult, IncidentReport } from '@/types';
 import { newsData } from '@/lib/data';
 
 export const fetchNews = async (page: number): Promise<{ data: NewsItem[]; hasMore: boolean }> => {
-  // Simulate pagination
+  
   const itemsPerPage = 5;
   const startIndex = (page - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
@@ -13,13 +13,13 @@ export const fetchNews = async (page: number): Promise<{ data: NewsItem[]; hasMo
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve({ data, hasMore });
-    }, 1000); // Simulate network delay
+    }, 1000); 
   });
 };
 
 // Security assessment using NIST guidelines
 
-// Function to submit the assessment and calculate the score
+
 export async function submitAssessment(answers: Record<string, string>): Promise<AssessmentResult> {
   const calculateScore = (answers: Record<string, string>): number => {
     let score = 0;
@@ -28,11 +28,11 @@ export async function submitAssessment(answers: Record<string, string>): Promise
     // Scoring logic based on answers
     for (const answer of Object.values(answers)) {
       if (answer === 'Regularly' || answer === 'Yes' || answer === 'Very strong' || answer === 'Always' || answer === 'Daily') {
-        score += 1; // Full score for best answers
+        score += 1; 
       } else if (answer === 'Sometimes' || answer === 'Moderate' || answer === 'Weekly') {
-        score += 0.5; // Partial score for moderate answers
+        score += 0.5; 
       }
-      // No points for 'Rarely' or 'Never' answers
+     
     }
 
     return Math.round((score / totalQuestions) * 100);
@@ -59,28 +59,26 @@ function getRecommendationsBasedOnAnswers(answers: Record<string, string>): stri
   const recommendations: string[] = [];
   
   // Recommendations based on specific answers
-  if (answers['2'] === 'No') { // Assuming '2' is the ID for the password manager question
+  if (answers['2'] === 'No') { 
     recommendations.push('Use a password manager for generating and storing strong passwords.');
   }
   
-  if (answers['4'] === 'Never') { // Assuming '4' is the ID for two-factor authentication
+  if (answers['4'] === 'Never') { 
     recommendations.push('Enable Multi-Factor Authentication on all accounts.');
   }
   
-  if (answers['5'] === 'Rarely or never') { // Assuming '5' is the ID for data backup
+  if (answers['5'] === 'Rarely or never') { 
     recommendations.push('Implement a regular data backup schedule (e.g., daily or weekly).');
   }
 
-  if (answers['1'] === 'Rarely' || answers['1'] === 'Never') { // Assuming '1' is the ID for software updates
+  if (answers['1'] === 'Rarely' || answers['1'] === 'Never') { 
     recommendations.push('Make sure to regularly update your software and operating systems.');
   }
 
-  if (answers['3'] === 'Weak') { // Assuming '3' is the ID for password strength
+  if (answers['3'] === 'Weak') { 
     recommendations.push('Consider using stronger passwords and a password manager to help with this.');
   }
-
-  // Add more recommendations based on other questions as needed
-  
+ 
   return recommendations;
 }
 

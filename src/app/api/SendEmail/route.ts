@@ -18,17 +18,17 @@ export async function POST(request: NextRequest) {
     const transporter = nodemailer.createTransport({
       host: smtpHost,
       port: smtpPort,
-      secure: smtpPort === 465, // Use TLS for port 465
+      secure: smtpPort === 465, 
       auth: {
         user: smtpUser,
         pass: smtpPassword,
       },
       tls: {
-        rejectUnauthorized: false, // Accept self-signed certs (optional)
+        rejectUnauthorized: false, 
       },
     });
 
-    // Attempt to send the email
+    
     await transporter.sendMail({
       from: smtpUser,
       to: adminEmail,

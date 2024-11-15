@@ -16,12 +16,10 @@ import { categories, resources } from '@/lib/data';
 import { Resource } from '@/types';
 import dynamic from 'next/dynamic';
 
-// Dynamic import for performance
+
 const ParticleBackground = dynamic(() => import('@/components/ParticleBackground'), {
   ssr: false
 });
-
-// Define a more specific type for filter
 type FilterType = 'All' | 'Trending' | 'New';
 
 export default function ResourcesPage() {
@@ -49,7 +47,6 @@ export default function ResourcesPage() {
     { icon: <Code className="mr-2" />, label: 'New', value: 'New' as FilterType }
   ];
 
-  // Category filter buttons
   const categoryFilterButtons = categories.map(category => ({
     label: category,
     value: category

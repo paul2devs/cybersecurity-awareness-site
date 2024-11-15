@@ -1,6 +1,6 @@
-import type { Metadata } from 'next'
+import { Metadata } from 'next'
 
-export const metadata: Metadata = {
+export const generateMetadata = (): Metadata => ({
   title: 'paul2dev - Cybersecurity Awareness',
   description: 'Learn about cybersecurity threats and how to protect yourself online.',
   keywords: ['cybersecurity', 'awareness', 'online safety', 'internet security'],
@@ -10,11 +10,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'paul2dev - Cybersecurity Awareness',
     description: 'Learn about cybersecurity threats and how to protect yourself online.',
-    url: 'https://yourwebsite.com', // Your website URL
+    url: 'https://paul2dev.com',
     siteName: 'paul2dev',
     images: [
       {
-        url: 'https://yourwebsite.com/image.jpg', // URL to an image for social sharing
+        url: 'https://paul2dev.com/image.jpg',
         width: 1200,
         height: 630,
         alt: 'Cybersecurity Awareness Image',
@@ -24,22 +24,14 @@ export const metadata: Metadata = {
     type: 'website',
   },
   twitter: {
-    card: 'summary_large_image', // Type of Twitter card
+    card: 'summary_large_image',
     title: 'paul2dev - Cybersecurity Awareness',
     description: 'Learn about cybersecurity threats and how to protect yourself online.',
-    images: ['https://yourwebsite.com/image.jpg'], // URL to an image for Twitter sharing
-    creator: '@techwhizkids', // Your Twitter handle
+    images: ['https://paul2dev.com/image.jpg'],
+    creator: '@techwhizkids',
   },
   robots: {
     index: true,
     follow: true,
   },
-}
-
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
-  return children
-}
+})

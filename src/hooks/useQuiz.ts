@@ -2,7 +2,6 @@ import { useState, useCallback } from 'react'
 import { QuizQuestion } from '@/types'
 
 const quizQuestions: QuizQuestion[] = [
-  // Existing questions
   {
     id: '1',
     question: 'What is phishing?',
@@ -25,7 +24,6 @@ const quizQuestions: QuizQuestion[] = [
     ],
     correctAnswer: 'The website is secure'
   },
-  // Additional questions
   {
     id: '3',
     question: 'What is a firewall used for?',
@@ -335,7 +333,6 @@ const quizQuestions: QuizQuestion[] = [
     correctAnswer: 'To store and manage passwords securely'
   }
 
-  // more question
 ];
 
 

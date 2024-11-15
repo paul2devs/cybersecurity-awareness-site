@@ -16,19 +16,19 @@ const CyberAssessmentModal: React.FC<CyberAssessmentModalProps> = ({
   const router = useRouter();
   const [isMobile, setIsMobile] = useState(false);
 
-  // Check screen size
+
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
 
-    // Check initial screen size
+    
     checkMobile();
 
-    // Add event listener to check screen size on resize
+    
     window.addEventListener('resize', checkMobile);
 
-    // Cleanup event listener
+    
     return () => {
       window.removeEventListener('resize', checkMobile);
     };

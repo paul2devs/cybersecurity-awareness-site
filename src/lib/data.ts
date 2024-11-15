@@ -368,14 +368,6 @@ export const newsData: NewsItem[] = [
 ];
 
 
-// hidden tools 
-
-
-
-// Glossary
-
-// In your lib/data.ts or similar file
-
 export const glossaryTerms: GlossaryTerm[] = [
   {
     id: '1',

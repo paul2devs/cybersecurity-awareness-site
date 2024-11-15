@@ -44,8 +44,8 @@ export default function CoursesPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#030812] via-[#0a1128] to-[#030812] text-white pt-24 pb-16">
       <div className="container mx-auto px-4">
-        {/* Futuristic Header with Added Padding */}
-        <motion.div 
+        {/* Futuristic Header  */}
+        <motion.div
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-16 space-y-6"
@@ -57,7 +57,7 @@ export default function CoursesPage() {
             Unlock the secrets of cybersecurity with cutting-edge courses designed to transform you into a digital guardian.
           </p>
 
-          {/* Search and Filter Section with Enhanced Responsiveness */}
+          {/* Search and Filter Section */}
           <div className="max-w-4xl mx-auto space-y-4">
             <div className="relative">
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-cyan-300" />
@@ -78,7 +78,7 @@ export default function CoursesPage() {
               )}
             </div>
 
-            {/* Filter Buttons with Improved Layout */}
+            {/* Filter Buttons */}
             <div className="flex flex-wrap justify-center gap-3">
               {FILTER_CATEGORIES.map((category) => (
                 <motion.button
@@ -101,7 +101,7 @@ export default function CoursesPage() {
           </div>
         </motion.div>
 
-        {/* Courses Grid with Responsive Layout */}
+        {/* Courses Grid*/}
         <AnimatePresence>
           {filteredCourses.length > 0 ? (
             <motion.div 

@@ -23,7 +23,6 @@ export default function CyberGlossary() {
      term.definition.toLowerCase().includes(searchTerm.toLowerCase()))
   )
 
-  // Animated Background Component
   const AnimatedBackground = () => (
     <div className="absolute inset-0 overflow-hidden z-0">
       <div className="absolute -top-1/2 -left-1/2 w-[200%] h-[200%] bg-gradient-to-r from-[#0A192F] via-[#112240] to-[#0A192F] animate-background-shift opacity-30"></div>

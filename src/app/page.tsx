@@ -25,7 +25,7 @@ import ToolsSection from '@/components/ToolsSection';
 import TestimonialSection from '@/components/TestimonialSection';
 import FAQSection from '@/components/FAQSection';
 
-// Type definition for section
+
 interface Section {
   title: string;
   icon: React.ReactNode;
@@ -33,7 +33,7 @@ interface Section {
   learnMorePath: string;
 }
 
-// Memoized Section Button Component with display name
+
 const SectionButton: React.FC<{
   section: Section;
   isActive: boolean;
@@ -169,7 +169,7 @@ export default function Home() {
     }
   ];
 
-  // Memoized section change handler
+ 
   const handleSectionChange = useCallback((index: number) => {
     setActiveSection(index);
     setIsMobileSectionsOpen(false);
@@ -240,16 +240,13 @@ export default function Home() {
                   type: "tween",
                   duration: 0.3 
                 }}
-                className="min-h-[600px] bg-[#112240] rounded-2xl p-8 shadow-2xl relative pb-20" // Added padding-bottom
+                className="min-h-[600px] bg-[#112240] rounded-2xl p-8 shadow-2xl relative pb-20" 
               >
-                {/* Render the active section component */}
                 <div className="space-y-6">
                   {sections[activeSection].component}
                 </div>
-                
-                {/* Learn More Button for other sections */}
                 {activeSection !== 5 && activeSection !== 6 && (
-                  <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2"> {/* Center the button */}
+                  <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2">
                     <Link href={sections[activeSection].learnMorePath}>
                       <motion.button
                         whileHover={{ scale: 1.05 }}

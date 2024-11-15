@@ -20,14 +20,13 @@ const badgeVariants = cva(
   }
 )
 
-// Define BadgeProps interface with additional variant options
+
 export interface BadgeProps
   extends React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof badgeVariants> {
   variant?: 'default' | 'secondary' | 'destructive' | 'outline' | 'success' | 'warning'
 }
 
-// Badge component
 function Badge({ className, variant, ...props }: BadgeProps) {
   return (
     <div className={cn(badgeVariants({ variant }), className)} {...props} />

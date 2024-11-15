@@ -12,7 +12,6 @@ import {
 import { threats } from '@/lib/threatData';
 import ThreatCard from '@/components/ThreatCard';
 
-// Enhanced Category Type
 type ThreatCategory = {
   name: string;
   icon: React.ReactNode;
@@ -26,7 +25,6 @@ export default function ThreatsPage() {
   const [activeCategories, setActiveCategories] = useState<string[]>([]);
   const [severityFilter, setSeverityFilter] = useState<number | null>(null);
 
-  // Advanced Category Definitions
   const threatCategories: ThreatCategory[] = [
     { 
       name: 'Network', 
@@ -66,19 +64,17 @@ export default function ThreatsPage() {
     );
   };
 
-  // Advanced Filtering Logic
   const filteredThreats = useMemo(() => {
     return threats.filter(threat => {
-      // Search Filter
       const matchesSearch = searchTerm.length === 0 || 
         threat.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
         threat.shortDescription.toLowerCase().includes(searchTerm.toLowerCase());
 
-      // Category Filter
+      
       const matchesCategory = activeCategories.length === 0 || 
         activeCategories.includes(threat.category);
 
-      // Severity Filter
+      
       const matchesSeverity = severityFilter === null || 
         threat.severity === severityFilter;
 
@@ -89,7 +85,6 @@ export default function ThreatsPage() {
   return (
     <div 
       className="relative min-h-screen bg-gradient-to-br from-[#0A0D1F] to-[#1A1D2B] text-white"
-      // Add top padding to prevent header overlap
       style={{ paddingTop: '100px' }}
     >
       <div className="container mx-auto px-4">

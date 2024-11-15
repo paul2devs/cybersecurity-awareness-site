@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Cyber-Futuristic Color Palette */
 :root {
   --color-primary: #0A1128;
   --color-secondary: #1B2845;
@@ -26,26 +25,24 @@ body {
   overscroll-behavior-x: none;
 }
 
-/* Ensure all content stays within viewport width */
 * {
   max-width: 100%;
   box-sizing: border-box;
 }
 
-/* Optional: Prevent horizontal overflow for specific elements */
 .no-horizontal-scroll {
   overflow-x: hidden;
   max-width: 100%;
 }
 
-/* Global Reset with Cyber Aesthetic */
+
 * {
   box-sizing: border-box;
   scrollbar-width: thin;
   scrollbar-color: var(--color-accent) var(--color-primary);
 }
 
-/* Cyber Gradient Background */
+
 body {
   @apply bg-gradient-to-br from-[#0A1128] via-[#1B2845] to-[#0A1128];
   font-family: 'Space Grotesk', 'Roboto Mono', monospace;
@@ -55,7 +52,6 @@ body {
   perspective: 1000px;
 }
 
-/* Cyber Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -69,7 +65,6 @@ body {
   border-radius: 10px;
 }
 
-/* Cyber Typography */
 h1, h2, h3, h4, h5, h6 {
   @apply font-bold tracking-wide text-white;
   text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
@@ -82,7 +77,6 @@ h1 {
 h2 { @apply text-4xl text-neon-blue; }
 h3 { @apply text-3xl text-neon-green; }
 
-/* Cyber Links */
 a {
   @apply text-neon-blue transition-all duration-300 ease-in-out;
   text-decoration: none;
@@ -108,7 +102,7 @@ a:hover::before {
   width: 100%;
 }
 
-/* Cyber Buttons */
+
 .btn {
   @apply px-6 py-3 rounded-lg font-bold uppercase tracking-wider;
   background: linear-gradient(45deg, var(--color-accent), var(--color-neon-blue));
@@ -139,7 +133,6 @@ a:hover::before {
   left: 100%;
 }
 
-/* Cyber Input Styles */
 .input {
   @apply w-full px-4 py-2 bg-[#1B2845] border-2 border-neon-blue rounded-lg;
   outline: none;
@@ -151,7 +144,6 @@ a:hover::before {
   box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
 }
 
-/* Animated Background Grid */
 .bg-cyber-grid {
   background-image: 
     linear-gradient(rgba(5, 12, 40, 0.8) 1px, transparent 1px),
@@ -166,7 +158,6 @@ a:hover::before {
   z-index: -1;
 }
 
-/* Neon Glow Effect */
 .neon-glow {
   animation: neon-pulse 2s infinite alternate;
 }
@@ -184,7 +175,6 @@ a:hover::before {
   }
 }
 
-/* Glitch Text Effect */
 .glitch-text {
   position: relative;
   color: white;
@@ -262,7 +252,7 @@ a:hover::before {
   100% { clip: rect(52px, 9999px, 12px, 0); }
 }
 
-/* Responsive Design */
+
 @media (max-width: 768px) {
   h1 { @apply text-4xl; }
   h2 { @apply text-3xl; }
@@ -275,7 +265,7 @@ a:hover::before {
   padding: 0 1rem;
 }
 
-/* Animation for elements on scroll */
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -291,7 +281,6 @@ a:hover::before {
   animation: fadeIn 0.5s ease forwards;
 }
 
-/* Utility Classes */
 .text-center {
   text-align: center;
 }

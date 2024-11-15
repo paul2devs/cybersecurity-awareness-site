@@ -156,7 +156,7 @@ export const IncidentForm: React.FC = () => {
               </div>
             </div>
 
-            {/* File Upload with Preview */}
+            {/* File Upload  */}
             <div>
               <label htmlFor="evidenceFile" className="block text-sm font-medium mb-2 text-[#4ecdc4]">
                 Attach Evidence

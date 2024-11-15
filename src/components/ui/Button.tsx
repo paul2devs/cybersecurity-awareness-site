@@ -21,7 +21,7 @@ const buttonVariants = cva(
         lg: "h-11 rounded-md px-8",
         icon: "h-10 w-10",
       },
-      // Add full-width variant
+     
       fullWidth: {
         true: "w-full",
         false: "",
@@ -30,12 +30,12 @@ const buttonVariants = cva(
     defaultVariants: {
       variant: "default",
       size: "default",
-      fullWidth: false, // Default to not full width
+      fullWidth: false, 
     },
   }
 )
 
-// Update ButtonProps to include 'fullWidth' prop
+
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {

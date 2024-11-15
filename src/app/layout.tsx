@@ -17,11 +17,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'paul2dev - Cybersecurity Awareness',
     description: 'Learn about cybersecurity threats and how to protect yourself online.',
-    url: 'https://yourwebsite.com', // Replace with your actual domain
+    url: 'https://paul2dev.com',
     siteName: 'paul2dev',
     images: [
       {
-        url: 'https://yourwebsite.com/image.jpg', // Replace with an actual image URL
+        url: 'https://paul2dev.com/og-image.jpg',
         width: 1200,
         height: 630,
         alt: 'Cybersecurity Awareness Image',
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'paul2dev - Cybersecurity Awareness',
     description: 'Learn about cybersecurity threats and how to protect yourself online.',
-    images: ['https://yourwebsite.com/image.jpg'], // Replace with an actual image URL
+    images: ['https://paul2dev.com/twitter-image.jpg'],
     creator: '@techwhizkids',
   },
   robots: {
@@ -50,12 +50,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="overflow-x-hidden">
-      <head>
-        {/* Add this to integrate metadata */}
-        <title>{metadata.title}</title>
-        <meta name="description" content={metadata.description} />
-        <meta name="keywords" content={metadata.keywords.join(', ')} />
-      </head>
       <body className={`${inter.className} overflow-x-hidden`}>
         <div className="w-full overflow-x-hidden">
           <Header />
@@ -64,7 +58,6 @@ export default function RootLayout({
           </main>
           <Footer />
         </div>
-        {/* Google Analytics Integration */}
         <GoogleAnalytics gaId="G-3WQFFFHG73" />
       </body>
     </html>

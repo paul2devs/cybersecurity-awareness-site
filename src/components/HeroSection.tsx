@@ -6,7 +6,6 @@ import { Play, ShieldCheck, Video } from 'lucide-react';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 
-// Dynamically import modal components to reduce initial bundle size
 const DemoVideoModal = dynamic(() => import('@/components/DemoVideoModal'), {
   ssr: false
 });

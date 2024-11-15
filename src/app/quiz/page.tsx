@@ -1,4 +1,3 @@
-// quiz/page.tsx
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -18,7 +17,6 @@ import {
 import { useQuiz } from '@/hooks/useQuiz';
 import dynamic from 'next/dynamic';
 
-// Dynamic imports for performance
 const ParticleBackground = dynamic(() => import('@/components/ParticleBackground'), {
   ssr: false
 });
@@ -52,7 +50,6 @@ export default function CybersecurityQuiz() {
         : 'error';
       setBackgroundVariant(variant);
       
-      // Trigger background animation
       controls.start({
         scale: [1, 1.05, 1],
         transition: { duration: 0.5 }

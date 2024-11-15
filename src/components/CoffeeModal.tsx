@@ -27,7 +27,7 @@ export default function CoffeeModal() {
     navigator.clipboard.writeText(account)
     setCopiedAccount(account)
     
-    // Reset copied state after 2 seconds
+    
     setTimeout(() => setCopiedAccount(null), 2000)
   }
 
@@ -117,8 +117,7 @@ export default function CoffeeModal() {
                     </button>
                   </motion.div>
                 ))}
-
-                {/* Additional Info */}
+]
                 <div className="text-center text-sm text-gray-500 mt-4">
                   Thank you for your support! ☕
                 </div>

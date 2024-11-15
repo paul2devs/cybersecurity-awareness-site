@@ -20,19 +20,19 @@ const HolographicOverlay: React.FC<HolographicOverlayProps> = ({
 
     if (!canvas || !ctx) return;
 
-    // Resize canvas to full window
+    
     const resizeCanvas = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
     };
 
-    // Generate holographic effect
+    
     const generateHolographicEffect = () => {
       if (!ctx) return;
 
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // Create gradient layers
+      
       const gradient = ctx.createRadialGradient(
         canvas.width / 2, 
         canvas.height / 2, 
@@ -45,12 +45,12 @@ const HolographicOverlay: React.FC<HolographicOverlayProps> = ({
       gradient.addColorStop(0, `${color}${Math.floor(intensity * 255).toString(16)}`);
       gradient.addColorStop(1, 'transparent');
 
-      // Draw holographic layers
+      
       ctx.globalAlpha = intensity;
       ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      // Add dynamic grid effect
+      
       ctx.beginPath();
       ctx.strokeStyle = `${color}${Math.floor(intensity * 100).toString(16)}`;
       ctx.lineWidth = 0.5;
@@ -68,14 +68,14 @@ const HolographicOverlay: React.FC<HolographicOverlayProps> = ({
       ctx.stroke();
     };
 
-    // Initial setup
+    
     resizeCanvas();
     generateHolographicEffect();
 
-    // Event listeners
+    
     window.addEventListener('resize', resizeCanvas);
 
-    // Cleanup
+    
     return () => {
       window.removeEventListener('resize', resizeCanvas);
     };

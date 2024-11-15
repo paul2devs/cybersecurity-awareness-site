@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 
-// Expanded type definitions
+
 type VantaNetOptions = {
   el: HTMLElement;
   THREE?: typeof THREE;
@@ -24,7 +24,6 @@ type VantaNetEffect = {
   destroy(): void;
 };
 
-// Enhanced interface for more configuration
 interface ParticleBackgroundProps {
   color?: number;
   backgroundColor?: number;
@@ -50,14 +49,14 @@ const ParticleBackground: React.FC<ParticleBackgroundProps> = ({
 
     const initVanta = async () => {
       try {
-        // Dynamically import Three.js and Vanta
+        
         const [importedThree] = await Promise.all([
           import('three'),
           import('vanta/dist/vanta.net.min')
         ]);
 
         if (vantaRef.current) {
-          // Use window.VANTA to access the library
+          
           const VANTA = (window as { VANTA?: { NET: (options: VantaNetOptions) => VantaNetEffect } }).VANTA;
 
           if (VANTA?.NET) {
@@ -89,7 +88,7 @@ const ParticleBackground: React.FC<ParticleBackgroundProps> = ({
 
     initVanta();
 
-    // Cleanup function
+    
     return () => {
       if (vantaEffect) {
         vantaEffect.destroy();
@@ -110,7 +109,6 @@ const ParticleBackground: React.FC<ParticleBackgroundProps> = ({
 
 export default ParticleBackground;
 
-// Extend window type declaration
 declare global {
   interface Window {
     VANTA?: {
