@@ -1,0 +1,1 @@
+export type BadgeVariant = 'outline' | 'default' | 'destructive' | 'secondary' | 'success' | 'warning';
