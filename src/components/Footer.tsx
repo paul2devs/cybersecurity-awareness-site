@@ -58,7 +58,8 @@ export default function Footer() {
                 { name: 'Latest News', href: '/news' },
                 { name: 'Quiz', href: '/quiz' },
                 { name: 'Glossary', href: '/glossary' },
-                { name: 'Sitemap', href: '/sitemap' }
+                { name: 'Sitemap', href: '/sitemap' },
+                { name: 'Report Incident', href: '/report-incident'}
               ].map((link) => (
                 <li key={link.href}>
                   <Link 

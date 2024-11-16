@@ -8,11 +8,66 @@ import {
   AlertTriangle, 
   Lock, 
   Cpu, 
-  Network, 
-} from 'lucide-react';
+  Network,
+  Mail} from 'lucide-react';
 import { IncidentForm } from '@/components/IncidentForm';
 import { HolographicBackground } from '@/components/HolographicBackground';
 import { RadarScanner } from '@/components/RadarScanner';
+
+const INCIDENT_TYPES = [
+  {
+    icon: <Mail className="w-6 h-6 text-cyan-400" />,
+    title: 'Suspicious Emails',
+    description: 'Phishing attempts or malicious email content'
+  },
+  {
+    icon: <Lock className="w-6 h-6 text-red-400" />,
+    title: 'Unauthorized Access',
+    description: 'Unauthorized system or data access attempts'
+  },
+  {
+    icon: <Cpu className="w-6 h-6 text-purple-400" />,
+    title: 'Device Issues',
+    description: 'Lost, stolen, or compromised devices'
+  },
+  {
+    icon: <Zap className="w-6 h-6 text-yellow-400" />,
+    title: 'Malware Detection',
+    description: 'Virus or malware infections'
+  },
+  {
+    icon: <Network className="w-6 h-6 text-green-400" />,
+    title: 'System Anomalies',
+    description: 'Suspicious system behavior or performance'
+  }
+];
+
+const SEVERITY_LEVELS = [
+  {
+    level: 'Critical',
+    color: 'bg-red-900/30 border-red-500',
+    impact: 'Severe business impact, service outage, confirmed data breach',
+    textColor: 'text-red-400'
+  },
+  {
+    level: 'High',
+    color: 'bg-orange-900/30 border-orange-500',
+    impact: 'Significant impact on business operations, potential data exposure',
+    textColor: 'text-orange-400'
+  },
+  {
+    level: 'Medium',
+    color: 'bg-yellow-900/30 border-yellow-500',
+    impact: 'Limited impact, easily containable business disruption',
+    textColor: 'text-yellow-400'
+  },
+  {
+    level: 'Low',
+    color: 'bg-green-900/30 border-green-500',
+    impact: 'Minimal impact, no service disruption or data risk',
+    textColor: 'text-green-400'
+  }
+];
 
 export default function ReportIncidentPage() {
   const [activeView, setActiveView] = useState<'form' | 'guide'>('form');
@@ -30,32 +85,16 @@ export default function ReportIncidentPage() {
     }
   ];
 
-  const handleViewChange = (value: 'form' | 'guide') => {
-    setActiveView(value);
-  };
-
   return (
-    <div 
-      className="
-        relative min-h-screen 
-        bg-[#0f1f3b] 
-        text-white 
-        overflow-hidden 
-        pt-24 // Added top padding to prevent header overlap
-      "
-    >
-      {/* Holographic Background */}
+    <div className="relative min-h-screen bg-[#0a192f] text-white overflow-hidden pt-24">
       <HolographicBackground />
-      
-      {/* Radar Scanner Overlay */}
       <RadarScanner />
 
       <div className="relative z-10 container mx-auto px-4 py-16 max-w-6xl">
-        {/* Futuristic Header */}
+        {/* Header */}
         <motion.header 
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
           className="text-center mb-16"
         >
           <div className="flex justify-center items-center mb-6">
@@ -73,7 +112,6 @@ export default function ReportIncidentPage() {
         <motion.div 
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
           className="flex justify-center space-x-4 mb-12"
         >
           {views.map((view) => (
@@ -81,7 +119,7 @@ export default function ReportIncidentPage() {
               key={view.value}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              onClick={() => handleViewChange(view.value as 'form' | 'guide')}
+              onClick={() => setActiveView(view.value as 'form' | 'guide')}
               className={`
                 flex items-center px-6 py-3 rounded-full 
                 transition-all duration-300 
@@ -104,7 +142,6 @@ export default function ReportIncidentPage() {
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -50 }}
-              transition={{ duration: 0.3 }}
             >
               <IncidentForm />
             </motion.div>
@@ -114,59 +151,65 @@ export default function ReportIncidentPage() {
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -50 }}
-              transition={{ duration: 0.3 }}
-              className="bg-[#112240] rounded-2xl p-8 shadow-2xl"
+              className="space-y-12"
             >
-              <h2 className="text- 3xl font-bold mb-8 text-[#64ffda]">
-                Incident Response Guide
-              </h2>
-
-              <div className="grid md:grid-cols-2 gap-8">
-                <div>
-                  <h3 className="text-xl font-semibold mb-4 flex items-center">
-                    <Cpu className="mr-3 text-[#64ffda]" />
-                    Incident Types
-                  </h3>
-                  <ul className="space-y-3 text-[#8892b0]">
-                    {[
-                      'Unauthorized Access',
-                      'Data Breach',
-                      'Malware Infection',
-                      'Phishing Attempt',
-                      'Network Intrusion'
-                    ].map((type) => (
-                      <li 
-                        key={type} 
-                        className="flex items-center hover:text-[#64ffda] transition"
-                      >
-                        <Zap className="mr-2 w-4 h-4 text-[#64ffda]" />
-                        {type}
-                      </li>
-                    ))}
-                  </ul>
+              {/* Incident Types Section */}
+              <div className="bg-[#112240] rounded-2xl p-8 shadow-2xl">
+                <h2 className="text-3xl font-bold mb-8 text-[#64ffda] flex items-center">
+                  <Cpu className="mr-4" /> Incident Types to Report
+                </h2>
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {INCIDENT_TYPES.map((incident) => (
+                    <motion.div
+                      key={incident.title}
+                      whileHover={{ scale: 1.05 }}
+                      className="
+                        bg-[#0a192f] 
+                        border border-[#233554] 
+                        rounded-xl 
+                        p-6 
+                        flex 
+                        flex-col 
+                        items-start 
+                        space-y-4
+                        hover:border-[#64ffda]
+                        transition-all
+                      "
+                    >
+                      {incident.icon}
+                      <div>
+                        <h3 className="text-xl font-semibold text-[#64ffda] mb-2">
+                          {incident.title}
+                        </h3>
+                        <p className="text-[#8892b0]">
+                          {incident.description}
+                        </p>
+                      </div>
+                    </motion.div>
+                  ))}
                 </div>
-
-                <div>
-                  <h3 className="text-xl font-semibold mb-4 flex items-center">
-                    <Lock className="mr-3 text-[#64ffda]" />
-                    Severity Levels
-                  </h3>
-                  {[
-                    { level: 'Critical', color: 'text-red-500' },
-                    { level: 'High', color: 'text-orange-500' },
-                    { level: 'Medium', color: 'text-yellow-500' },
-                    { level: 'Low', color: 'text-green-500' }
-                  ].map((severity) => (
+              </div> {/* Severity Levels Section */}
+              <div className="bg-[#112240] rounded-2xl p-8 shadow-2xl mt-12">
+                <h2 className="text-3xl font-bold mb-8 text-[#64ffda] flex items-center">
+                  <Lock className="mr-4" /> Severity Levels
+                </h2>
+                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                  {SEVERITY_LEVELS.map((severity) => (
                     <div 
                       key={severity.level} 
                       className={`
-                        mb-3 p-3 rounded-lg 
-                        bg-[#233554] 
+                        p-6 rounded-lg 
                         ${severity.color} 
+                        border-l-4 border-opacity-50 
                         hover:scale-105 transition
                       `}
                     >
-                      {severity.level} Severity
+                      <h3 className={`text-xl font-semibold ${severity.textColor}`}>
+                        {severity.level}
+                      </h3>
+                      <p className="text-[#8892b0]">
+                        {severity.impact}
+                      </p>
                     </div>
                   ))}
                 </div>

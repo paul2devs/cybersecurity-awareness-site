@@ -156,36 +156,7 @@ export const IncidentForm: React.FC = () => {
               </div>
             </div>
 
-            {/* File Upload  */}
-            <div>
-              <label htmlFor="evidenceFile" className="block text-sm font-medium mb-2 text-[#4ecdc4]">
-                Attach Evidence
-              </label>
-              <div className="flex items-center space-x-4">
-                <Button
-                  type="button"
-                  onClick={() => fileInputRef.current?.click()}
-                  className="bg-[#4ecdc4]/20 text-[#4ecdc4] hover:bg-[#4ecdc4]/30 transition-colors duration-300 flex items-center"
-                >
-                  <Paperclip className="mr-2" />
-                  {formData.evidenceFile ? 'Change File' : 'Attach File'}
-                </Button>
-                {formData.evidenceFile && ( <span className="text-white">
-                    {formData.evidenceFile.name}
-                  </span>
-                )}
-              </div>
-              <input
-                type="file"
-                id="evidenceFile"
-                name="evidenceFile"
-                ref={fileInputRef}
-                onChange={handleFileChange}
-                className="hidden"
-                accept="image/*,video/*,.pdf,.doc,.docx,.txt"
-              />
-            </div>
-
+            
             {/* Personal Information Fields */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
@@ -281,6 +252,37 @@ export const IncidentForm: React.FC = () => {
                 className="bg-[#2c3e5a] text-white border-[#4ecdc4]/30 focus:border-[#4ecdc4] focus:ring-[#4ecdc4]"
               />
             </div>
+
+            {/* File Upload  */}
+            <div>
+              <label htmlFor="evidenceFile" className="block text-sm font-medium mb-2 text-[#4ecdc4]">
+                Attach Evidence
+              </label>
+              <div className="flex items-center space-x-4">
+                <Button
+                  type="button"
+                  onClick={() => fileInputRef.current?.click()}
+                  className="bg-[#4ecdc4]/20 text-[#4ecdc4] hover:bg-[#4ecdc4]/30 transition-colors duration-300 flex items-center"
+                >
+                  <Paperclip className="mr-2" />
+                  {formData.evidenceFile ? 'Change File' : 'Attach File'}
+                </Button>
+                {formData.evidenceFile && ( <span className="text-white">
+                    {formData.evidenceFile.name}
+                  </span>
+                )}
+              </div>
+              <input
+                type="file"
+                id="evidenceFile"
+                name="evidenceFile"
+                ref={fileInputRef}
+                onChange={handleFileChange}
+                className="hidden"
+                accept="image/*,video/*,.pdf,.doc,.docx,.txt"
+              />
+            </div>
+
 
             {/* Error Alert */}
             {error && (

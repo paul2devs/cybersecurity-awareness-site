@@ -8,7 +8,6 @@ const nextConfig = {
   swcMinify: true,
 
   webpack: (config, { isServer }) => {
-    // Ensure optimization exists before pushing
     if (!config.optimization) {
       config.optimization = {};
     }

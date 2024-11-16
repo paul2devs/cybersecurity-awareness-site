@@ -82,7 +82,7 @@ const TestimonialSection: React.FC = () => {
         <motion.h2
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-4xl font-bold text-electric-blue mb-4"
+          className="text-4xl font-bold text-electric-blue mb-4 pt-[20px]"
         >
           Success Stories
         </motion.h2>
