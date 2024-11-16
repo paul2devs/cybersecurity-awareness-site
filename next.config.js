@@ -1,107 +1,49 @@
-const TerserPlugin = require('terser-webpack-plugin');
-const { withSentryConfig } = require('@sentry/nextjs');
-
 /** @type {import('next').NextConfig} */
+
 const nextConfig = {
-  output: 'standalone', 
   reactStrictMode: true,
   swcMinify: true,
-
-  webpack: (config, { isServer }) => {
-    if (!config.optimization) {
-      config.optimization = {};
-    }
-    
-    if (!config.optimization.minimizer) {
-      config.optimization.minimizer = [];
-    }
-    
-    config.externals = [
-      ...(config.externals || []),
-      'canvas',
-      'jsdom',
-    ];
-
-    if (!isServer) {
-      config.watchOptions = {
-        ignored: [
-          '**/.git/**', 
-          '**/node_modules/**', 
-          '**/.next/**'
-        ],
-      };
-    }
-
-    config.optimization.minimizer.push(
-      new TerserPlugin({
-        parallel: true,
-        terserOptions: {
-          compress: {
-            drop_console: true,
-          },
-        },
-      })
-    );
-
+  images: {
+    domains: [], 
+    formats: ['image/webp', 'image/avif'], 
+  },
+  output: 'standalone', 
+  webpack(config) {
+    config.module.rules.push({
+      test: /\.(woff|woff2|eot|ttf|otf)$/, // Handle custom fonts
+      type: 'asset/resource',
+    });
     return config;
   },
-
-  images: {
-    domains: [
-      'example.com',
-      'yourcdn.com',
-    ],
-    unoptimized: false,
-  },
-
-  compress: true,
-  poweredByHeader: false,
-
   async headers() {
     return [
       {
-        source: '/:path*',
+        source: '/(.*)',
         headers: [
-          { 
-            key: 'X-DNS-Prefetch-Control', 
-            value: 'on' 
-          },
-          { 
-            key: 'Strict-Transport-Security', 
-            value: 'max-age=63072000; includeSubDomains; preload' 
-          },
-          { 
-            key: 'X-XSS-Protection', 
-            value: '1; mode=block' 
-          },
-          { 
-            key: 'X-Frame-Options', 
-            value: 'SAMEORIGIN' 
-          },
-          { 
-            key: 'X-Content-Type-Options', 
-            value: 'nosniff' 
-          },
-          { 
-            key: 'Referrer-Policy', 
-            value: 'strict-origin-when-cross-origin' 
-          },
-          {
-            key: 'Content-Security-Policy',
-            value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'"
-          }
-        ]
-      }
+          { key: 'X-Content-Type-Options', value: 'nosniff' },
+          { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
+          { key: 'Content-Security-Policy', value: "default-src 'self'; img-src 'self' data:;" },
+        ],
+      },
     ];
+  },
+  async rewrites() {
+   
+    return [
+      { source: '/api/send-email', destination: '/api/SendEmail/route' },
+      { source: '/api/upload-file', destination: '/api/upload-file/route' },
+    ];
+  },
+  async redirects() {
+    return [
+      { source: '/old-path', destination: '/new-path', permanent: true },
+    ];
+  },
+  i18n: {
+    
+    locales: ['en'],
+    defaultLocale: 'en',
   },
 };
 
-// Optional: Sentry Configuration
-const sentryWebpackPluginOptions = {
-  silent: true,
-};
-
-// Conditionally apply Sentry configuration
-module.exports = process.env.SENTRY_ENABLED 
-  ? withSentryConfig(nextConfig, sentryWebpackPluginOptions) 
-  : nextConfig;
+module.exports = nextConfig;
