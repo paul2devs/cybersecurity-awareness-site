@@ -22,7 +22,7 @@ export function IncidentForm() {
     impact: '',
     actions: '',
     severity: 'low',
-    affectedSystems: '',
+    affectedSystems: [],
     witnesses: '',
     evidenceAttached: false,
     personName: '',
@@ -31,8 +31,10 @@ export function IncidentForm() {
     email: '',
     evidenceFile: null
   });
+
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState('');
+  const [newSystem, setNewSystem] = useState('');
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -59,6 +61,23 @@ export function IncidentForm() {
     }));
   };
 
+  const handleAddAffectedSystem = () => {
+    if (newSystem.trim() !== '') {
+      setFormData(prevData => ({
+        ...prevData,
+        affectedSystems: [...prevData.affectedSystems, newSystem.trim()]
+      }));
+      setNewSystem('');
+    }
+  };
+
+  const handleRemoveAffectedSystem = (systemToRemove: string) => {
+    setFormData(prevData => ({
+      ...prevData,
+      affectedSystems: prevData.affectedSystems.filter(system => system !== systemToRemove)
+    }));
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
@@ -72,19 +91,21 @@ export function IncidentForm() {
 
   if (submitted) {
     return (
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="bg-green-900/20 border border-green-500 p-4 rounded-lg"
-      >
-        <Alert className="bg-green-900/30">
-          <Shield className="w-4 h-4 text-green-400" />
-          <AlertTitle className="text-green-300">Success!</AlertTitle>
-          <AlertDescription className="text-green-200">
-            Your incident report has been submitted successfully. Our team will review it shortly.
-          </AlertDescription>
-        </Alert>
-      </motion.div>
+      <div className="min-h-screen bg-[#0f1f3b] flex items-center justify-center p-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="w-full max-w-md"
+        >
+          <Alert className="bg-green-900/30 border border-green-500">
+            <Shield className="w-6 h-6 text-green-400" />
+            <AlertTitle className="text-green-300 text-xl">Success!</AlertTitle>
+            <AlertDescription className="text-green-200">
+              Your incident report has been submitted successfully. Our team will review it shortly.
+            </AlertDescription>
+          </Alert>
+        </motion.div>
+      </div>
     );
   }
 
@@ -119,10 +140,7 @@ export function IncidentForm() {
                         value={type.value} 
                         className="focus:bg-[#4ecdc4]/20 hover:bg-[#4ecdc4]/10"
                       >
-                        <div>
-                          <span className="font-semibold text-white">{type.label}</span>
-                          <p className="text-xs text-gray-400">{type.description}</p>
-                        </div>
+                        {type.label}
                       </SelectItem>
                     ))}
                   </SelectContent>
@@ -146,9 +164,7 @@ export function IncidentForm() {
                         value={level.value} 
                         className="focus:bg-[#4ecdc4]/20 hover:bg-[#4ecdc4]/10"
                       >
-                        <span className={`${level.color} font-semibold`}>
-                          {level.label}
-                        </span>
+                        {level.label}
                       </SelectItem>
                     ))}
                   </SelectContent>
@@ -166,10 +182,9 @@ export function IncidentForm() {
                   id="date"
                   name="date"
                   type="date"
-                  value={formData.date}
+                   value={formData.date}
                   onChange={handleInputChange}
-                  required
-                  className="bg-[#2c3e5a] text-white border-[#4ecdc4]/30 focus:border-[#4ecdc4] focus:ring-[#4ecdc4]"
+                  className="bg-[#2c3e5a] text-white border-[#4ecdc4]/30 focus:border-[#4ecdc4]"
                 />
               </div>
               <div>
@@ -182,25 +197,133 @@ export function IncidentForm() {
                   type="time"
                   value={formData.time}
                   onChange={handleInputChange}
-                  required
-                  className="bg-[#2c3e5a] text-white border-[#4ecdc4]/30 focus:border-[#4ecdc4] focus:ring-[#4ecdc4]"
+                  className="bg-[#2c3e5a] text-white border-[#4ecdc4]/30 focus:border-[#4ecdc4]"
                 />
               </div>
             </div>
-            
-            {/* Personal Information Fields */}
+
+            {/* Description */}
+            <div>
+              <label htmlFor="description" className="block text-sm font-medium mb-2 text-[#4ecdc4]">
+                Description
+              </label>
+              <Textarea
+                id="description"
+                name="description"
+                value={formData.description}
+                onChange={handleInputChange}
+                className="bg-[#2c3e5a] text-white border-[#4ecdc4]/30 focus:border-[#4ecdc4]"
+                rows={4}
+              />
+            </div>
+
+            {/* Impact and Actions */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label htmlFor="impact" className="block text-sm font-medium mb-2 text-[#4ecdc4]">
+                  Impact
+                </label>
+                <Textarea
+                  id="impact"
+                  name="impact"
+                  value={formData.impact}
+                  onChange={handleInputChange}
+                  className="bg-[#2c3e5a] text-white border-[#4ecdc4]/30 focus:border-[#4ecdc4]"
+                  rows={4}
+                />
+              </div>
+              <div>
+                <label htmlFor="actions" className="block text-sm font-medium mb-2 text-[#4ecdc4]">
+                  Actions Taken
+                </label>
+                <Textarea
+                  id="actions"
+                  name="actions"
+                  value={formData.actions}
+                  onChange={handleInputChange}
+                  className="bg-[#2c3e5a] text-white border-[#4ecdc4]/30 focus:border-[#4ecdc4]"
+                  rows={4}
+                />
+              </div>
+            </div>
+
+            {/* Affected Systems */}
+            <div>
+              <label className="block text-sm font-medium mb-2 text-[#4ecdc4]">
+                Affected Systems
+              </label>
+              <div className="flex items-center mb-2">
+                <Input
+                  type="text"
+                  value={newSystem}
+                  onChange={(e) => setNewSystem(e.target.value)}
+                  placeholder="Add affected system"
+                  className="bg-[#2c3e5a] text-white border-[#4ecdc4]/30 focus:border-[#4ecdc4] flex-grow"
+                />
+                <Button
+                  type="button"
+                  onClick={handleAddAffectedSystem}
+                  className="ml-2 bg-[#4ecdc4] text-white hover:bg-[#40CFEA] transition-colors duration-300"
+                >
+                  Add
+                </Button>
+              </div>
+              <ul className="list-disc pl-5">
+                {formData.affectedSystems.map((system) => (
+                  <li key={system} className="flex justify-between items-center">
+                    <span className="text-[#4ecdc4]">{system}</span>
+                    <Button
+                      type="button"
+                      onClick={() => handleRemoveAffectedSystem(system)}
+                      className="text-red-500 hover:text-red-700"
+                    >
+                      Remove
+                    </Button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Evidence Upload */}
+            <div>
+              <label htmlFor="evidenceFile" className="block text-sm font-medium mb-2 text-[#4ecdc4]">
+                Evidence File
+              </label>
+              <input
+                type="file"
+                ref={fileInputRef}
+                onChange={handleFileChange}
+                className="bg-[#2c3e5a] text-white border-[#4ecdc4]/30 focus:border-[#4ecdc4]"
+              />
+            </div>
+
+            {/* Witnesses */}
+            <div>
+              <label htmlFor="witnesses" className="block text-sm font-medium mb-2 text-[#4ecdc4]">
+                Witnesses
+              </label>
+              <Textarea
+                id="witnesses"
+                name ="witnesses"
+                value={formData.witnesses}
+                onChange={handleInputChange}
+                className="bg-[#2c3e5a] text-white border-[#4ecdc4]/30 focus:border-[#4ecdc4]"
+                rows={4}
+              />
+            </div>
+
+            {/* Personal Information */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label htmlFor="personName" className="block text-sm font-medium mb-2 text-[#4ecdc4]">
-                  Person Name
+                  Your Name
                 </label>
                 <Input
                   id="personName"
                   name="personName"
                   value={formData.personName}
                   onChange={handleInputChange}
-                  required
-                  className="bg-[#2c3e5a] text-white border-[#4ecdc4]/30 focus:border-[#4ecdc4] focus:ring-[#4ecdc4]"
+                  className="bg-[#2c3e5a] text-white border-[#4ecdc4]/30 focus:border-[#4ecdc4]"
                 />
               </div>
               <div>
@@ -212,10 +335,11 @@ export function IncidentForm() {
                   name="companyName"
                   value={formData.companyName}
                   onChange={handleInputChange}
-                  className="bg-[#2c3e5a] text-white border-[#4ecdc4]/30 focus:border-[#4ecdc4] focus:ring-[#4ecdc4]"
+                  className="bg-[#2c3e5a] text-white border-[#4ecdc4]/30 focus:border-[#4ecdc4]"
                 />
               </div>
             </div>
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label htmlFor="phoneNumber" className="block text-sm font-medium mb-2 text-[#4ecdc4]">
@@ -226,7 +350,7 @@ export function IncidentForm() {
                   name="phoneNumber"
                   value={formData.phoneNumber}
                   onChange={handleInputChange}
-                  className="bg-[#2c3e5a] text-white border-[#4ecdc4]/30 focus:border-[#4ecdc4] focus:ring-[#4ecdc4]"
+                  className="bg-[#2c3e5a] text-white border-[#4ecdc4]/30 focus:border-[#4ecdc4]"
                 />
               </div>
               <div>
@@ -239,116 +363,12 @@ export function IncidentForm() {
                   type="email"
                   value={formData.email}
                   onChange={handleInputChange}
-                  required
-                  className="bg-[#2c3e5a] text-white border-[#4ecdc4]/30 focus:border-[#4ecdc4] focus:ring-[#4ecdc4]"
+                  className="bg-[#2c3e5a] text-white border-[#4ecdc4]/30 focus:border-[#4ecdc4]"
                 />
               </div>
             </div>
 
-            {/* Incident Details */}
-            <div>
-              <label htmlFor="description" className="block text-sm font-medium mb-2 text-[#4ecdc4]">
-                Description
-              </label>
-              <Textarea
-                id="description"
-                name="description"
-                value={formData.description}
-                onChange={handleInputChange}
-                required
-                className="bg-[#2c3e5a] text-white border-[#4ecdc4]/30 focus:border-[#4ecdc4] focus:ring-[#4ecdc4]"
-              />
-            </div>
-            <div>
-              <label htmlFor="impact" className="block text-sm font-medium mb-2 text-[#4ecdc4]">
-                Impact
-              </label>
-              <Textarea
-                id="impact"
-                name="impact"
-                value={formData.impact}
-                onChange={handleInputChange}
-                className="bg-[#2c3e5a] text-white border-[#4ecdc4]/30 focus:border-[#4ecdc4] focus:ring-[#4ecdc4]"
-              />
-            </div>
-            <div>
-              <label htmlFor="actions" className="block text-sm font-medium mb-2 text-[#4ecdc4]">
-                Actions Taken
-              </label>
-              <Textarea
-                id="actions"
-                name="actions"
-                value={formData.actions}
-                onChange={handleInputChange}
-                className="bg-[#2c3e5a] text-white border-[#4ecdc4]/30 focus:border-[#4ecdc4] focus:ring-[#4ecdc4]"
-              />
-            </div>
-
-            {/* New Fields: Affected Systems and Witnesses */}
-            <div>
-              <label htmlFor="affectedSystems" className="block text-sm font-medium mb-2 text-[#4ecdc4]">
-                Affected Systems
-              </label>
-              <Textarea
-                id="affectedSystems"
-                name="affectedSystems"
-                value={formData.affectedSystems}
-                onChange={handleInputChange}
-                className="bg-[#2c3e5a] text-white border-[#4ecdc4]/30 focus:border-[#4ecdc4] focus:ring-[#4ecdc4]"
-              />
-            </div>
-            <div>
-              <label htmlFor="witnesses" className="block text-sm font-medium mb-2 text-[#4ecdc4]">
-                Witnesses
-              </label>
-              <Textarea
-                id="witnesses"
-                name="witnesses"
-                value={formData.witnesses}
-                onChange={handleInputChange}
-                className="bg-[#2c3e5a] text-white border-[#4ecdc4]/30 focus:border-[#4ecdc4] focus:ring-[#4ecdc4]"
-              />
-            </div>
-
-            {/* File Upload  */}
-            <div>
-              <label htmlFor="evidenceFile" className="block text-sm font-medium mb-2 text-[#4ecdc4]">
-                Attach Evidence
-              </label>
-              <div className="flex items-center space-x-4">
-                <Button
-                  type="button"
-                  onClick={() => fileInputRef.current?.click()}
-                  className="bg-[#4ecdc4]/20 text-[#4ecdc4] hover:bg-[#4ecdc4]/30 transition-colors duration-300 flex items-center"
-                >
-                  <Paperclip className="mr-2" />
-                  {formData.evidenceFile ? 'Change File' : 'Attach File'}
-                </Button>
-                {formData.evidenceFile && ( <span className="text-white">
-                    {formData.evidenceFile.name}
-                  </span>
-                )}
-              </div>
-              <input
-                type="file"
-                id="evidenceFile"
-                name="evidenceFile"
-                ref={fileInputRef}
-                onChange={handleFileChange}
-                className="hidden"
-                accept="image/*,video/*,.pdf,.doc,.docx,.txt"
-              />
-            </div>
-
-            {/* Error Alert */}
-            {error && (
-              <Alert variant="destructive" className="bg-red-900 border-red-500">
-                <AlertTriangle className="w-4 h-4 text-red-400" />
-                <AlertTitle className="text-red-300">Error</AlertTitle>
-                <AlertDescription className="text-red-200">{error}</AlertDescription>
-              </Alert>
-            )}
-
+            {/* Submit Button */}
             <Button 
               type="submit" 
               className="w-full bg-[#4ecdc4] text-white hover:bg-[#40CFEA] transition-colors duration-300 py-2 px-4 rounded-md shadow-sm"

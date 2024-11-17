@@ -8,25 +8,22 @@ interface DemoVideoModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
+
 const DemoVideoModal: React.FC<DemoVideoModalProps> = ({ 
   isOpen, 
   onClose 
 }) => {
   const [isMobile, setIsMobile] = useState(false);
 
-  
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
 
-    
     checkMobile();
 
-    
     window.addEventListener('resize', checkMobile);
 
-    
     return () => {
       window.removeEventListener('resize', checkMobile);
     };
@@ -54,6 +51,9 @@ const DemoVideoModal: React.FC<DemoVideoModalProps> = ({
       y: '50%'
     }
   };
+
+  // Extract video ID from the original URL
+  const videoId = 'VEQd-jmVs44';
 
   return (
     <AnimatePresence>
@@ -85,7 +85,7 @@ const DemoVideoModal: React.FC<DemoVideoModalProps> = ({
             <iframe 
               width="100%" 
               height="315" 
-              src="https://www.youtube.com/watch?v=VEQd-jmVs44&pp=ygUnZGVtbyBvZiBjeWJlcnNlY3VyaXR5IGF3YXJlbmVzcyB3ZWJzaXRl" 
+              src={`https://www.youtube.com/embed/${videoId}`} 
               title="Demo Video" 
               frameBorder="0" 
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 

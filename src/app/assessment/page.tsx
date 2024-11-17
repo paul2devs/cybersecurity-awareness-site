@@ -26,6 +26,7 @@ export default function AssessmentPage() {
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [result, setResult] = useState<AssessmentResult | null>(null);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [confettiActive, setConfettiActive] = useState(false); 
 
   const handleAnswer = (answer: string) => {
     setIsAnimating(true);
@@ -41,18 +42,21 @@ export default function AssessmentPage() {
         handleSubmit();
       }
       setIsAnimating(false);
-    }, 300); // Delay for animation
-  };
+    }, 300); 
 
   const handleSubmit = async () => {
     const assessmentResult = await submitAssessment(answers);
     setResult(assessmentResult);
+    if (assessmentResult.score > 70) {
+      setConfettiActive(true); 
+    }
   };
 
   const handleRetake = () => {
     setCurrentQuestion(0);
     setAnswers({});
     setResult(null);
+    setConfettiActive(false); 
   };
 
   const renderResultBadge = (score: number) => {
@@ -63,7 +67,7 @@ export default function AssessmentPage() {
 
   return (
     <div className="min-h-screen bg-[#0f1f3b] flex items-center justify-center p-4 relative overflow-hidden pt-20">
-      <Confetti active={!!result && result.score > 70} />
+      <Confetti active={confettiActive} /> 
       <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <AnimatePresence>
           {result ? (
@@ -90,7 +94,7 @@ export default function AssessmentPage() {
                     <div className="bg-white/20 rounded-xl p-6">
                       <p className="text-xl mb-2">Your Assessment Score:</p>
                       <div className="text-6xl font-bold text-white sm:text-7xl">
-                        {result.score}%
+                        {result.score }%
                       </div>
                     </div>
                   </div>

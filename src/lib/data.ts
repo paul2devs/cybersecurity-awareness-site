@@ -1212,11 +1212,4 @@ export const severityLevels = [
 ] as const
 
 
-export const affectedSystemsList = [
-  { value: 'network', label: 'Network Infrastructure' },
-  { value: 'database', label: 'Database Systems' },
-  { value: 'application', label: 'Web/Mobile Applications' },
-  { value: 'hardware', label: 'Hardware Systems' },
-  { value: 'cloud', label: 'Cloud Services' },
-  { value: 'other', label: 'Other Systems' },
-];
+

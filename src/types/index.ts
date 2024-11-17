@@ -8,17 +8,15 @@ export interface IncidentReport {
   impact: string;
   actions: string;
   severity: IncidentSeverity;
-  affectedSystems: string[];
+  affectedSystems: string[]; 
   witnesses: string;
   evidenceAttached: boolean;
   personName: string;
   companyName: string;
-  phoneCountryCode: string;
   phoneNumber: string;
   email: string;
   evidenceFile: File | null;
 }
-
 export interface Threat {
   severity: number;
   category: string;
@@ -153,23 +151,6 @@ export interface Resource {
   new?: boolean;
 }
 
-export interface IncidentReport {
-  type: string;
-  date: string;
-  time: string;
-  description: string;
-  impact: string;
-  actions: string;
-  severity: IncidentSeverity;
-  affectedSystems: string;
-  witnesses: string;
-  evidenceAttached: boolean;
-  personName: string;
-  companyName: string;
-  phoneNumber: string;
-  email: string;
-  evidenceFile: File | null;
-}
 
 export type IncidentSeverity = 'critical' | 'high' | 'medium' | 'low';
 
