@@ -172,6 +172,77 @@ export function IncidentForm() {
               </div>
             </div>
 
+            {/* Personal Information */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label htmlFor="personName" className="block text-sm font-medium mb-2 text-[#4ecdc4]">
+                  Your Name
+                </label>
+                <Input
+                  id="personName"
+                  name="personName"
+                  value={formData.personName}
+                  onChange={handleInputChange}
+                  className="bg-[#2c3e5a] text-white border-[#4ecdc4]/30 focus:border-[#4ecdc4]"
+                />
+              </div>
+              <div>
+                <label htmlFor="companyName" className="block text-sm font-medium mb-2 text-[#4ecdc4]">
+                  Company Name
+                </label>
+                <Input
+                  id="companyName"
+                  name="companyName"
+                  value={formData.companyName}
+                  onChange={handleInputChange}
+                  className="bg-[#2c3e5a] text-white border-[#4ecdc4]/30 focus:border-[#4ecdc4]"
+                />
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label htmlFor="phoneNumber" className="block text-sm font-medium mb-2 text-[#4ecdc4]">
+                  Phone Number
+                </label>
+                <Input
+                  id="phoneNumber"
+                  name="phoneNumber"
+                  value={formData.phoneNumber}
+                  onChange={handleInputChange}
+                  className="bg-[#2c3e5a] text-white border-[#4ecdc4]/30 focus:border-[#4ecdc4]"
+                />
+              </div>
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium mb-2 text-[#4ecdc4]">
+                  Email
+                </label>
+                <Input
+                  id="email"
+                  name="email"
+                  type="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  className="bg-[#2c3e5a] text-white border-[#4ecdc4]/30 focus:border-[#4ecdc4]"
+                />
+              </div>
+            </div>
+
+            {/* Description */}
+            <div>
+              <label htmlFor="description" className="block text-sm font-medium mb-2 text-[#4ecdc4]">
+                Description
+              </label>
+              <Textarea
+                id="description"
+                name="description"
+                value={formData.description}
+                onChange={handleInputChange}
+                className="bg-[#2c3e5a] text-white border-[#4ecdc4]/30 focus:border-[#4ecdc4]"
+                rows={4}
+              />
+            </div>
+
             {/* Date and Time */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
@@ -200,21 +271,6 @@ export function IncidentForm() {
                   className="bg-[#2c3e5a] text-white border-[#4ecdc4]/30 focus:border-[#4ecdc4]"
                 />
               </div>
-            </div>
-
-            {/* Description */}
-            <div>
-              <label htmlFor="description" className="block text-sm font-medium mb-2 text-[#4ecdc4]">
-                Description
-              </label>
-              <Textarea
-                id="description"
-                name="description"
-                value={formData.description}
-                onChange={handleInputChange}
-                className="bg-[#2c3e5a] text-white border-[#4ecdc4]/30 focus:border-[#4ecdc4]"
-                rows={4}
-              />
             </div>
 
             {/* Impact and Actions */}
@@ -312,61 +368,7 @@ export function IncidentForm() {
               />
             </div>
 
-            {/* Personal Information */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <label htmlFor="personName" className="block text-sm font-medium mb-2 text-[#4ecdc4]">
-                  Your Name
-                </label>
-                <Input
-                  id="personName"
-                  name="personName"
-                  value={formData.personName}
-                  onChange={handleInputChange}
-                  className="bg-[#2c3e5a] text-white border-[#4ecdc4]/30 focus:border-[#4ecdc4]"
-                />
-              </div>
-              <div>
-                <label htmlFor="companyName" className="block text-sm font-medium mb-2 text-[#4ecdc4]">
-                  Company Name
-                </label>
-                <Input
-                  id="companyName"
-                  name="companyName"
-                  value={formData.companyName}
-                  onChange={handleInputChange}
-                  className="bg-[#2c3e5a] text-white border-[#4ecdc4]/30 focus:border-[#4ecdc4]"
-                />
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <label htmlFor="phoneNumber" className="block text-sm font-medium mb-2 text-[#4ecdc4]">
-                  Phone Number
-                </label>
-                <Input
-                  id="phoneNumber"
-                  name="phoneNumber"
-                  value={formData.phoneNumber}
-                  onChange={handleInputChange}
-                  className="bg-[#2c3e5a] text-white border-[#4ecdc4]/30 focus:border-[#4ecdc4]"
-                />
-              </div>
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium mb-2 text-[#4ecdc4]">
-                  Email
-                </label>
-                <Input
-                  id="email"
-                  name="email"
-                  type="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  className="bg-[#2c3e5a] text-white border-[#4ecdc4]/30 focus:border-[#4ecdc4]"
-                />
-              </div>
-            </div>
+            
 
             {/* Submit Button */}
             <Button 

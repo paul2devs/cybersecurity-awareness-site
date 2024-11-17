@@ -1,4 +1,5 @@
-'use client'
+// ... other imports
+'use client';
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -43,6 +44,7 @@ export default function AssessmentPage() {
       }
       setIsAnimating(false);
     }, 300); 
+  }; // <-- Closing brace added here
 
   const handleSubmit = async () => {
     const assessmentResult = await submitAssessment(answers);
@@ -102,7 +104,7 @@ export default function AssessmentPage() {
                   <div className="bg-white/10 p-6 rounded-xl">
                     <p className="text-xl mb-4">{result.summary}</p>
                     <div className="space-y-2">
-                      <h3 className="text-2xl font-semibold mb-2">Recommendations:</h3>
+                      <h3 className=" text-2xl font-semibold mb-2">Recommendations:</h3>
                       {result.recommendations.map((rec, index) => (
                         <motion.div
                           key={index}
