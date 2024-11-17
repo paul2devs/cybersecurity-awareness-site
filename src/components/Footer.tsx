@@ -20,8 +20,9 @@ export default function Footer() {
             <ul className="space-y-3">
               {[
                 { name: 'Home', href: '/' },
-                { name: 'Threats', href: '/threats' },
+                { name: 'Threats', href: '/threat' },
                 { name: 'Prevention', href: '/prevention' },
+                { name: 'Resources', href: '/resources'},
                 { name: 'Tools', href: '/tools' },
                 { name: 'Assessment', href: '/assessment' },
                 { name: 'Courses', href: '/courses' }
@@ -81,7 +82,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Support & Connect */}
           <div className="grid grid-cols-2 gap-8 col-span-2">
             {/* Follow Us */}
             <div>
@@ -122,7 +122,7 @@ export default function Footer() {
               <h4 className="text-xl font-semibold mb-6 text-purple-400 
                 border-b-2 border-purple-400 pb-2 
                 hover:text-purple-300 transition">
-                Connect With Me
+                Connect With Us
               </h4>
               <div className="space-y-3">
                 <a 
@@ -155,7 +155,7 @@ export default function Footer() {
                 </a>
                 <a 
                   href={`https://wa.me/2347068578749?text=${encodeURIComponent(
-                    "Hello! I'm interested in learning more about your cybersecurity services. Can you provide me with more information?"
+                    "Hello! Paul, My name is ________. I'm interested in learning more about your cybersecurity services. Can you provide me with more information?"
                   )}`} 
                   target="_blank"          
                   rel="noopener noreferrer" 
@@ -189,7 +189,6 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Additional Support Section */}
         <div className="text-center mt-12">
           <h4 className="text-xl font-semibold mb-4 text-yellow-400">
             Support My Work

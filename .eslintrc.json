@@ -6,6 +6,10 @@
   "parser": "@typescript-eslint/parser",
   "plugins": ["@typescript-eslint"],
   "root": true,
+  "parserOptions": {
+    "project": "./tsconfig.json",
+    "tsconfigRootDir": "./"
+  },
   "rules": {
     "no-unused-vars": "off",
     "@typescript-eslint/no-unused-vars": [
@@ -23,19 +27,17 @@
   },
   "overrides": [
     {
-      "files": ["next.config.js"],
+      "files": ["next.config.js", "postcss.config.js"],
+      "parser": "espree",
       "parserOptions": {
-        "ecmaVersion": 2020,
-        "sourceType": "module"
-      },
-      "rules": {
-        "@typescript-eslint/no-require-imports": "off"
+        "ecmaVersion": 2020
       }
     },
     {
-      "files": ["src/app/**/*.ts", "src/app/**/*.tsx"],
-      "parserOptions": {
-        "project": "./tsconfig.json"
+      "files": ["tailwind.config.ts"],
+      "rules": {
+        "@typescript-eslint/no-require-imports": "off",
+        "@typescript-eslint/no-var-requires": "off"
       }
     }
   ],

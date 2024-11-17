@@ -12,7 +12,8 @@ import {
   Globe, 
   Book, 
   Cpu, 
-  Newspaper 
+  Newspaper, 
+  FileText 
 } from 'lucide-react';
 import { usePathname } from 'next/navigation'; 
 
@@ -23,6 +24,7 @@ const MENU_ITEMS = [
   { name: 'Tools', href: '/tools', icon: Cpu },
   { name: 'Courses', href: '/courses', icon: Book },
   { name: 'News', href: '/news', icon: Newspaper },
+  { name: 'Resources', href: '/resources', icon: FileText }, 
 ];
 
 export default function Header() {
@@ -41,7 +43,6 @@ export default function Header() {
     
     if (latest > SCROLL_THRESHOLD) {
       setIsScrolled(true);
-      
       
       if (difference > 10) {
         setIsHidden(true);
@@ -122,7 +123,7 @@ export default function Header() {
             >
               <Image
                 src="/images/logos.png"
-                alt="paul2dev logo"
+ alt="paul2dev logo"
                 width={50}
                 height={50}
                 className="w-12 h-12 rounded-full border-2 border-cyan-500/50"
@@ -210,7 +211,7 @@ export default function Header() {
             </motion.div>
           )}
         </AnimatePresence>
-        </motion.header>
+      </motion.header>
     </>
   );
 }

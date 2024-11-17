@@ -97,20 +97,20 @@ const CoursesSection: React.FC = () => {
         <motion.h2
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-4xl font-bold text-electric-blue mb-4 pt-[20px]"
+          className="text-3xl sm:text-4xl font-bold text-electric-blue mb-4 pt-[20px]"
         >
           Cybersecurity Brief Paths
         </motion.h2>
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="text-xl text-light-gray max-w-2xl mx-auto"
+          className="text-lg sm:text-xl text-light-gray max-w-2xl mx-auto"
         >
           Boost your cybersecurity skills with expert-led training courses.
         </motion.p>
       </div>
 
-      <div className="grid md:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
         {cybersecurityCourses.map((course) => (
           <motion.div
             key={course.id}
@@ -119,17 +119,17 @@ const CoursesSection: React.FC = () => {
             animate="visible"
             whileHover={{ scale: 1.05 }}
             className={`
-              bg-steel-gray/30 rounded-xl p-6 
+              bg-steel-gray/30 rounded-xl p-4 sm:p-6 
               cursor-pointer transition-all duration-300
               ${selectedCourse?.id === course.id ? 'border-2 border-electric-blue' : ''}
             `}
             onClick={() => setSelectedCourse(course)}
           >
             <div className="flex justify-between items-center mb-4">
-              <div className={`${course.color}`}>{course.icon}</div>
+              <div className={`${course.color} text-2xl`}>{course.icon}</div>
               <span 
                 className={`
-                  px-3 py-1 rounded-full text-sm 
+                  px-3 py-1 rounded-full text-xs sm:text-sm 
                   ${course.level === 'Beginner' ? 'bg-blue-500/20 text-blue-400' : 
                     course.level === 'Intermediate' ? 'bg-green-500/20 text-green-400' : 
                     'bg-purple-500/20 text-purple-400'}
@@ -138,17 +138,17 @@ const CoursesSection: React.FC = () => {
                 {course.level}
               </span>
             </div>
-            <h3 className="text-xl font-semibold text-white mb-2">
+             <h3 className="text-lg sm:text-xl font-semibold text-white mb-2">
               {course.title}
             </h3>
             <div className="flex items-center text-light-gray space-x-4 mb-4">
               <div className="flex items-center space-x-1">
                 <Clock className="w-4 h-4" />
-                <span>{course.duration}</span>
+                <span className="text-sm sm:text-base">{course.duration}</span>
               </div>
               <div className="flex items-center space-x-1">
-                <User className="w-4 h-4" />
-                <span>{course.instructor}</span>
+                <User  className="w-4 h-4" />
+                <span className="text-sm sm:text-base">{course.instructor}</span>
               </div>
             </div>
           </motion.div>
@@ -159,14 +159,14 @@ const CoursesSection: React.FC = () => {
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mt-12 bg-steel-gray/30 rounded-xl p-8"
+          className="mt-12 bg-steel-gray/30 rounded-xl p-6 sm:p-8"
         >
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-6">
             <div>
               <h3 className="text-2xl font-bold text-white mb-4">
                 {selectedCourse.title}
               </h3>
-              <p className="text-light-gray mb-6">
+              <p className="text-light-gray mb-6 text-sm sm:text-base">
                 {selectedCourse.description}
               </p>
               <div className="mb-6">
@@ -177,7 +177,7 @@ const CoursesSection: React.FC = () => {
                   {selectedCourse.modules.map((module, index) => (
                     <li 
                       key={index} 
-                      className="flex items-center space-x-2 text-light-gray"
+                      className="flex items-center space-x-2 text-light-gray text-sm sm:text-base"
                     >
                       <PlayCircle className="w-4 h-4 text-electric-blue" />
                       <span>{module}</span>
@@ -199,7 +199,7 @@ const CoursesSection: React.FC = () => {
             </div>
             <div className="hidden md:block bg-steel-gray/50 rounded-xl p-6 flex items-center justify-center">
               <div className="text-center">
-                <User className="w-24 h-24 mx-auto text-light-gray mb-4" />
+                <User  className="w-24 h-24 mx-auto text-light-gray mb-4" />
                 <h4 className="text-xl font-semibold text-white">
                   {selectedCourse.instructor}
                 </h4>
@@ -207,7 +207,8 @@ const CoursesSection: React.FC = () => {
               </div>
             </div>
           </div>
-        </motion.div>)}
+        </motion.div>
+      )}
     </div>
   );
 };

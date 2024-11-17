@@ -1,97 +1,78 @@
 'use client'
 
-import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { Zap, Brain, Target, TrendingUp } from 'lucide-react'
-import { Card } from '@/components/ui/Card'
-import { AssessmentResult } from '@/types'
-import { submitAssessment } from '@/lib/api'
-import { assessmentQuestions } from '@/lib/data'
-import Confetti from '@/components/Confetti'
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Zap, Brain, Target, TrendingUp } from 'lucide-react';
+import { Card } from '@/components/ui/Card';
+import { AssessmentResult } from '@/types';
+import { submitAssessment } from '@/lib/api';
+import { assessmentQuestions } from '@/lib/data';
+import Confetti from '@/components/Confetti';
 
 const DIFFICULTY_ICONS = {
   'easy': <Zap className="text-green-400" />,
   'medium': <Brain className="text-yellow-400" />,
   'hard': <Target className="text-red-400" />
-}
+};
 
 const RESULT_BACKGROUNDS = {
   'Beginner': 'bg-gradient-to-br from-green-400 to-blue-500',
   'Intermediate': 'bg-gradient-to-br from-yellow-400 to-orange-500',
   'Advanced': 'bg-gradient-to-br from-red-400 to-purple-500'
-}
+};
 
 export default function AssessmentPage() {
-  const [currentQuestion, setCurrentQuestion] = useState(0)
-  const [answers, setAnswers] = useState<Record<string, string>>({})
-  const [result, setResult] = useState<AssessmentResult | null>(null)
-  const [isAnimating, setIsAnimating] = useState(false)
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [answers, setAnswers] = useState<Record<string, string>>({});
+  const [result, setResult] = useState<AssessmentResult | null>(null);
+  const [isAnimating, setIsAnimating] = useState(false);
 
   const handleAnswer = (answer: string) => {
-    setIsAnimating(true)
+    setIsAnimating(true);
     setAnswers(prevAnswers => ({
       ...prevAnswers,
       [assessmentQuestions[currentQuestion].id]: answer
-    }))
+    }));
 
     setTimeout(() => {
       if (currentQuestion < assessmentQuestions.length - 1) {
-        setCurrentQuestion(prevQuestion => prevQuestion + 1)
-        setIsAnimating(false)
+        setCurrentQuestion(prevQuestion => prevQuestion + 1);
       } else {
-        handleSubmit()
+        handleSubmit();
       }
-    }, 300)
-  }
+      setIsAnimating(false);
+    }, 300); // Delay for animation
+  };
 
   const handleSubmit = async () => {
-    const assessmentResult = await submitAssessment(answers)
-    setResult(assessmentResult)
-  }
+    const assessmentResult = await submitAssessment(answers);
+    setResult(assessmentResult);
+  };
 
   const handleRetake = () => {
-    setCurrentQuestion(0)
-    setAnswers({})
-    setResult(null)
-  }
+    setCurrentQuestion(0);
+    setAnswers({});
+    setResult(null);
+  };
 
   const renderResultBadge = (score: number) => {
-    if (score < 40) return 'Beginner'
-    if (score < 70) return 'Intermediate'
-    return 'Advanced'
-  }
+    if (score < 40) return 'Beginner';
+    if (score < 70) return 'Intermediate';
+    return 'Advanced';
+  };
 
   return (
-    <div 
-      className="
-        min-h-screen 
-        bg-[#0f1f3b] 
-        flex items-center 
-        justify-center 
-        p-4 
-        relative 
-        overflow-hidden
-        pt-20
-      "
-    >
+    <div className="min-h-screen bg-[#0f1f3b] flex items-center justify-center p-4 relative overflow-hidden pt-20">
       <Confetti active={!!result && result.score > 70} />
-      
-      <div className="
-        w-full 
-        max-w-4xl 
-        mx-auto 
-        px-4 
-        sm:px-6 
-        lg:px-8
-      ">
+      <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <AnimatePresence>
           {result ? (
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.8 }} 
-              animate={{ opacity: 1, scale: 1 }} 
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
               className="w-full z-10 relative"
             >
-              <Card 
+              <Card
                 className={`
                   ${RESULT_BACKGROUNDS[renderResultBadge(result.score)]} 
                   text-white 
@@ -126,7 +107,7 @@ export default function AssessmentPage() {
                           transition={{ delay: index * 0.2 }}
                           className="flex items-center space-x-2"
                         >
-                          < TrendingUp className="text-white/50" size={16} />
+                          <TrendingUp className="text-white/50" size={16} />
                           <span>{rec}</span>
                         </motion.div>
                       ))}
@@ -211,18 +192,20 @@ export default function AssessmentPage() {
                   </motion.div>
                 </div>
               </Card>
-              <div className="text-center mt-8">
-                <button
-                  onClick={handleSubmit}
-                  className="bg-cyan-500 hover:bg-cyan-400 transition-all duration-300 text-white px-6 py-3 rounded-lg"
-                >
-                  Submit Assessment
-                </button>
-              </div>
+              {currentQuestion === assessmentQuestions.length - 1 && (
+                <div className="text-center mt-8">
+                  <button
+                    onClick={handleSubmit}
+                    className="bg-cyan-500 hover:bg-cyan-400 transition-all duration-300 text-white px-6 py-3 rounded-lg"
+                  >
+                    Submit Assessment
+                  </button>
+                </div>
+              )}
             </motion.div>
           )}
         </AnimatePresence>
       </div>
     </div>
-  )
+  );
 }

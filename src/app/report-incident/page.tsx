@@ -9,7 +9,8 @@ import {
   Lock, 
   Cpu, 
   Network,
-  Mail} from 'lucide-react';
+  Mail
+} from 'lucide-react';
 import { IncidentForm } from '@/components/IncidentForm';
 import { HolographicBackground } from '@/components/HolographicBackground';
 import { RadarScanner } from '@/components/RadarScanner';
@@ -99,11 +100,11 @@ export default function ReportIncidentPage() {
         >
           <div className="flex justify-center items-center mb-6">
             <AlertTriangle className="w-12 h-12 text-[#64ffda] mr-4 animate-pulse" />
-            <h1 className="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#64ffda] to-[#8892b0]">
-              Cyber Incident Response
+            <h1 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#64ffda] to-[#8892b0]">
+              Incident Report
             </h1>
           </div>
-          <p className="max-w-2xl mx-auto text-xl text-[#8892b0]">
+          <p className="max-w-2xl mx-auto text-lg md:text-xl text-[#8892b0]">
             Secure, Confidential, Immediate Threat Mitigation
           </p>
         </motion.header>
@@ -121,7 +122,7 @@ export default function ReportIncidentPage() {
               whileTap={{ scale: 0.95 }}
               onClick={() => setActiveView(view.value as 'form' | 'guide')}
               className={`
-                flex items-center px-6 py-3 rounded-full 
+                flex items-center px-4 py-2 rounded-full 
                 transition-all duration-300 
                 ${activeView === view.value 
                   ? 'bg-[#64ffda] text-[#0a192f] shadow-lg' 
@@ -154,11 +155,11 @@ export default function ReportIncidentPage() {
               className="space-y-12"
             >
               {/* Incident Types Section */}
-              <div className="bg-[#112240] rounded-2xl p-8 shadow-2xl">
-                <h2 className="text-3xl font-bold mb-8 text-[#64ffda] flex items-center">
+              <div className="bg-[#112240] rounded-2xl p-6 md:p-8 shadow-2xl">
+                <h2 className="text-2xl md:text-3xl font-bold mb-6 text-[#64ffda] flex items-center">
                   <Cpu className="mr-4" /> Incident Types to Report
                 </h2>
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
                   {INCIDENT_TYPES.map((incident) => (
                     <motion.div
                       key={incident.title}
@@ -167,47 +168,48 @@ export default function ReportIncidentPage() {
                         bg-[#0a192f] 
                         border border-[#233554] 
                         rounded-xl 
-                        p-6 
+                        p-4 md:p-6 
                         flex 
                         flex-col 
                         items-start 
-                        space-y-4
+                        space-y-2
                         hover:border-[#64ffda]
                         transition-all
                       "
                     >
                       {incident.icon}
                       <div>
-                        <h3 className="text-xl font-semibold text-[#64ffda] mb-2">
+                        <h3 className="text-lg md:text-xl font-semibold text-[#64ffda] mb-1">
                           {incident.title}
                         </h3>
-                        <p className="text-[#8892b0]">
+                        <p className="text-[#8892b0] text-sm md:text-base">
                           {incident.description}
                         </p>
                       </div>
                     </motion.div>
                   ))}
                 </div>
-              </div> {/* Severity Levels Section */}
-              <div className="bg-[#112240] rounded-2xl p-8 shadow-2xl mt-12">
-                <h2 className="text-3xl font-bold mb-8 text-[#64ffda] flex items-center">
+              </div> 
+              {/* Severity Levels Section */}
+              <div className="bg-[#112240] rounded-2xl p-6 md:p-8 shadow-2xl mt-12">
+                <h2 className="text-2xl md:text-3xl font-bold mb-6 text-[#64ffda] flex items-center">
                   <Lock className="mr-4" /> Severity Levels
                 </h2>
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
                   {SEVERITY_LEVELS.map((severity) => (
                     <div 
                       key={severity.level} 
                       className={`
-                        p-6 rounded-lg 
+                        p-4 md:p-6 rounded-lg 
                         ${severity.color} 
                         border-l-4 border-opacity-50 
                         hover:scale-105 transition
                       `}
                     >
-                      <h3 className={`text-xl font-semibold ${severity.textColor}`}>
+                      <h3 className={`text-lg md:text-xl font-semibold ${severity.textColor}`}>
                         {severity.level}
                       </h3>
-                      <p className="text-[#8892b0]">
+                      <p className="text-[#8892b0] text-sm md:text-base">
                         {severity.impact}
                       </p>
                     </div>

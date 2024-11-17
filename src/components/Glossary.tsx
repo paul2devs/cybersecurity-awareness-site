@@ -2,13 +2,14 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Search, BookOpen, Zap, Terminal, Globe } from 'lucide-react'
+import { Search, BookOpen, Zap, Terminal, Globe, X } from 'lucide-react'
 import { glossaryTerms } from '@/lib/data'
 
 export default function CyberGlossary() {
   const [expandedTerm, setExpandedTerm] = useState<string | null>(null)
   const [searchTerm, setSearchTerm] = useState('')
   const [activeCategory, setActiveCategory] = useState('All')
+  const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false)
 
   const categories = [
     { name: 'All', icon: <BookOpen /> },
@@ -35,15 +36,16 @@ export default function CyberGlossary() {
       {/* Animated Background */}
       <AnimatedBackground />
 
-      {/* Add padding to prevent header overlap */}
-      <div className="container mx-auto px-4 py-16 pt-32 relative z-10">
+      {/* Container with responsive padding */}
+      <div className="container mx-auto px-4 py-16 pt-24 md:pt-32 relative z-10">
+        {/* Responsive Header */}
         <motion.h1 
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-5xl font-bold mb-8 text-[#40CFEA] flex items-center gap-4"
+          className="text-3xl md:text-5xl font-bold mb-6 md:mb-8 text-[#40CFEA] flex items-center gap-2 md:gap-4"
         >
-          <Terminal className="text-[#40CFEA]" size={48} />
+          <Terminal className="text-[#40CFEA] w-8 h-8 md:w-12 md:h-12" />
           Cyber Lexicon
         </motion.h1>
 
@@ -52,41 +54,66 @@ export default function CyberGlossary() {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="mb-12 flex space-x-4"
+          className="mb-8 md:mb-12 space-y-4"
         >
-          <div className="relative flex-grow">
+          {/* Search Input */}
+          <div className="relative">
             <input
               type="text"
               placeholder="Search cybersecurity terms..."
-              className="w-full p-4 pl-12 bg-[#112240] rounded-xl text-white border-2 border-[#233554] focus:border-[#40CFEA] transition-all"
+              className="w-full p-3 md:p-4 pl-10 md:pl-12 bg-[#112240] rounded-xl text-white 
+              border-2 border-[#233554] focus:border-[#40CFEA] transition-all 
+              text-sm md:text-base"
               onChange={(e) => setSearchTerm(e.target.value)}
             />
             <Search 
-              className="absolute left-4 top-1/2 -translate-y-1/2 text-[#40CFEA]" 
+              className="absolute left-3 md:left-4 top-1/2 -translate-y-1/2 text-[#40CFEA] w-4 h-4 md:w-6 md:h-6" 
             />
           </div>
 
-          {/* Category Filters */}
-          <div className="flex space-x-2">
+          {/* Mobile Category Filter Toggle */}
+          <div className="block md:hidden">
+            <button 
+              onClick={() => setIsMobileFilterOpen(!isMobileFilterOpen)}
+              className="w-full p-3 bg-[#112240] rounded-xl flex justify-between items-center"
+            >
+              <span>Filter by Category</span>
+              {isMobileFilterOpen ? <X /> : <Terminal />}
+            </button>
+          </div>
+
+          {/* Category Filters - Responsive Layout */}
+          <div className={`
+            ${isMobileFilterOpen ? 'block' : 'hidden'} md:block
+            space-y-2 md:space-y-0 md:flex md:space-x-2
+          `}>
             {categories.map((category) => (
               <motion.button
                 key={category.name}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => setActiveCategory(category.name)}
-                className={`p-3 rounded-xl transition-all ${
-                  activeCategory === category.name 
-                    ? 'bg-[#40CFEA] text-[#0A192F]' 
-                    : 'bg-[#112240] text-[#8892B0]'
-                }`}
+                onClick={() => {
+                  setActiveCategory(category.name)
+                  setIsMobileFilterOpen(false)
+                }}
+                className={`
+                  w-full md:w-auto flex items-center justify-center p-3 rounded-xl 
+                  transition-all text-sm md:text-base
+                  ${
+                    activeCategory === category.name 
+                      ? 'bg-[#40CFEA] text-[#0A192F]' 
+                      : 'bg-[#112240] text-[#8892B0]'
+                  }
+                `}
               >
                 {category.icon}
+                <span className="ml-2 md:hidden">{category.name}</span>
               </motion.button>
             ))}
           </div>
         </motion.div>
 
-        {/* Terms Grid */}
+        {/* Terms Grid - Responsive Layout */}
         <motion.div 
           initial="hidden"
           animate="visible"
@@ -100,27 +127,28 @@ export default function CyberGlossary() {
               }
             }
           }}
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6"
         >
           {filteredTerms.map((term) => (
             <motion.div 
               key={term.id}
               variants={{
                 hidden: { opacity: 0, y: 20 },
-                visible: { opacity: 1, 
+                visible: { 
+                  opacity: 1, 
                   y: 0,
                   transition: { type: 'spring', stiffness: 100 }
                 }
               }}
               whileHover={{ scale: 1.05 }}
-              className="bg-[#112240] rounded-xl p-6 border-2 border-transparent hover:border-[#40CFEA] transition-all"
+              className="bg-[#112240] rounded-xl p-4 md:p-6 border-2 border-transparent hover:border-[#40CFEA] transition-all"
             >
               <div 
                 onClick={() => setExpandedTerm(expandedTerm === term.id ? null : term.id)}
                 className="cursor-pointer"
               >
-                <div className="flex justify-between items-center mb-4">
-                  <h3 className="text-xl font-semibold text-[#40CFEA]">
+                <div className="flex justify-between items-center mb-3 md:mb-4">
+                  <h3 className="text-base md:text-xl font-semibold text-[#40CFEA] truncate">
                     {term.term}
                   </h3>
                   <motion.div
@@ -129,9 +157,7 @@ export default function CyberGlossary() {
                     }}
                   >
                     <Zap 
-                      className={`text-[#40CFEA] ${
-                        expandedTerm === term.id ? 'rotate-180' : ''
-                      }`} 
+                      className="text-[#40CFEA] w-4 h-4 md:w-6 md:h-6" 
                     />
                   </motion.div>
                 </div>
@@ -140,8 +166,8 @@ export default function CyberGlossary() {
                     <motion.p
                       initial={{ opacity: 0, height: 0 }}
                       animate={{ opacity: 1, height: 'auto' }}
-                      exit={{ opacity: 0, height: 0 }}
-                      className="text-[#8892B0]"
+                      exit={{ opacity: 0 , height: 0 }}
+                      className="text-[#8892B0] text-sm md:text-base"
                     >
                       {term.definition}
                     </motion.p>

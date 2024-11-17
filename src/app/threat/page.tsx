@@ -70,11 +70,9 @@ export default function ThreatsPage() {
         threat.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
         threat.shortDescription.toLowerCase().includes(searchTerm.toLowerCase());
 
-      
       const matchesCategory = activeCategories.length === 0 || 
         activeCategories.includes(threat.category);
 
-      
       const matchesSeverity = severityFilter === null || 
         threat.severity === severityFilter;
 
@@ -103,66 +101,62 @@ export default function ThreatsPage() {
           </div>
 
           {/* Category Filters */}
-          <div>
-            <div className="flex flex-wrap gap-2">
-              {threatCategories.map((category) => (
-                <button
-                  key={category.name}
-                  onClick={() => toggleCategory(category.name)}
-                  className={`
-                    flex items-center px-3 py-1 rounded-full text-sm
-                    ${activeCategories.includes(category.name) 
-                      ? `${category.color} text-white` 
-                      : 'bg-[#112240] text-gray-300'}
-                  `}
-                >
-                  {category.icon}
-                  {category.name}
-                </button>
-              ))}
-            </div>
+          <div className="flex flex-wrap gap-2 md:col-span-2">
+            {threatCategories.map((category) => (
+              <button
+                key={category.name }
+                onClick={() => toggleCategory(category.name)}
+                className={`
+                  flex items-center px-3 py-2 rounded-full text-sm
+                  ${activeCategories.includes(category.name) 
+                    ? `${category.color} text-white` 
+                    : 'bg-[#112240] text-gray-300'}
+                `}
+              >
+                {category.icon}
+                {category.name}
+              </button>
+            ))}
           </div>
 
           {/* Severity Filter */}
-          <div>
-            <div className="flex items-center space-x-2">
-              <span>Severity:</span>
-              {[1, 2, 3].map((level) => (
-                <button
-                  key={level}
-                  onClick={() => setSeverityFilter(level)}
-                  className={`
-                    px-3 py-1 rounded-full
-                    ${severityFilter === level 
-                      ? 'bg-red-500 text-white' 
-                      : 'bg-[#112240] text-gray-300'}
-                  `}
-                >
-                  {level}
-                </button>
-              ))}
-              {severityFilter && (
-                <button 
-                  onClick={() => setSeverityFilter(null)}
-                  className="text-gray-400 hover:text-white"
-                >
-                  <X />
-                </button>
-              )}
-            </div>
+          <div className="flex items-center space-x-2">
+            <span>Severity:</span>
+            {[1, 2, 3].map((level) => (
+              <button
+                key={level}
+                onClick={() => setSeverityFilter(level)}
+                className={`
+                  px-3 py-2 rounded-full
+                  ${severityFilter === level 
+                    ? 'bg-red-500 text-white' 
+                    : 'bg-[#112240] text-gray-300'}
+                `}
+              >
+                {level}
+              </button>
+            ))}
+            {severityFilter && (
+              <button 
+                onClick={() => setSeverityFilter(null)}
+                className="text-gray-400 hover:text-white"
+              >
+                <X />
+              </button>
+            )}
           </div>
         </div>
 
         {/* Results Summary */}
         <div className="mb-8 text-center">
-          <h2 className="text-3xl font-bold text-[#00FFD4]">
+          <h2 className="text-2xl md:text-3xl font-bold text-[#00FFD4]">
             {filteredThreats.length} Threats Identified
           </h2>
         </div>
 
         {/* Threats Grid */}
         <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
           initial="hidden"
           animate="visible"
           variants={{
@@ -202,7 +196,7 @@ export default function ThreatsPage() {
         {/* No Results */}
         {filteredThreats.length === 0 && (
           <div className="text-center py-12">
-            <h3 className="text-2xl text-gray-400">
+            <h3 className="text-xl md:text-2xl text-gray-400">
               No threats found matching your criteria
             </h3>
           </div>

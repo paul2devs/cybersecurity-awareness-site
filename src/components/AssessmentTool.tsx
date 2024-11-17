@@ -1,12 +1,12 @@
 'use client'
 
-import React, { useState } from 'react'
-import { motion } from 'framer-motion'
-import { Card, CardHeader, CardTitle, CardContent } from './ui/Card'
-import { Button } from './ui/Button'
-import { ProgressBar } from './ProgressBar'
-import { AssessmentQuestion, AssessmentResult } from '@/types'
-import { submitAssessment } from '@/lib/api'
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import { Card, CardHeader, CardTitle, CardContent } from './ui/Card';
+import { Button } from './ui/Button';
+import { ProgressBar } from './ProgressBar';
+import { AssessmentQuestion, AssessmentResult } from '@/types';
+import { submitAssessment } from '@/lib/api';
 
 const assessmentQuestions: AssessmentQuestion[] = [
   {
@@ -34,31 +34,35 @@ const assessmentQuestions: AssessmentQuestion[] = [
     question: 'How often do you back up your data?',
     options: ['Daily', 'Weekly', 'Monthly', 'Rarely or never']
   }
-]
+];
 
 export const AssessmentTool: React.FC = () => {
-  const [currentQuestion, setCurrentQuestion] = useState(0)
-  const [answers, setAnswers] = useState<Record<string, string>>({})
-  const [result, setResult] = useState<AssessmentResult | null>(null)
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [answers, setAnswers] = useState<Record<string, string>>({});
+  const [result, setResult] = useState<AssessmentResult | null>(null);
 
-  const handleAnswer = (answer: string) => {
+  const handleAnswer = async (answer: string) => {
+    // Update the answers
     setAnswers(prevAnswers => ({
       ...prevAnswers,
       [assessmentQuestions[currentQuestion].id]: answer
-    }))
+    }));
+
+    // Move to the next question
     if (currentQuestion < assessmentQuestions.length - 1) {
-      setCurrentQuestion(prevQuestion => prevQuestion + 1)
+      setCurrentQuestion(prevQuestion => prevQuestion + 1);
     } else {
-      handleSubmit()
+      // If it's the last question, submit the assessment
+      await handleSubmit();
     }
-  }
+  };
 
   const handleSubmit = async () => {
-    const assessmentResult = await submitAssessment(answers)
-    setResult(assessmentResult)
-  }
+    const assessmentResult = await submitAssessment(answers);
+    setResult(assessmentResult);
+  };
 
-  const progress = ((currentQuestion + 1) / assessmentQuestions.length) * 100
+  const progress = ((currentQuestion + 1) / assessmentQuestions.length) * 100;
 
   return (
     <div className="w-full max-w-2xl mx-auto">
@@ -114,8 +118,18 @@ export const AssessmentTool: React.FC = () => {
               </CardContent>
             </Card>
           </motion.div>
+          {currentQuestion === assessmentQuestions.length - 1 && (
+            <div className="text-center mt-4">
+              <Button
+                onClick={handleSubmit}
+                className="bg-blue-500 text-white"
+              >
+                Submit Assessment
+              </Button>
+            </div>
+          )}
         </>
       )}
     </div>
-  )
-}
+  );
+};

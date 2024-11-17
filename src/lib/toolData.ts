@@ -506,7 +506,7 @@ export const hiddenTools: Tool[] = [
   },
   {
     id: 'hidden-tool-2',
-    name: 'Mars Stealer CRACKED 2024',
+    name: 'Mars Stealer',
     description: 'A non-resident stealer with loader and grabber functionality, designed for crypto enthusiasts.',
     features: [
       'Supports multiple browsers including Chrome, Firefox, and Opera',
@@ -526,8 +526,8 @@ export const hiddenTools: Tool[] = [
   },
   {
     id: 'hidden-tool-3',
-    name: 'Email Extractor 5.7 Cracked',
-    description: 'Email Extractor 5.7 cracked is an all-in-one e-mail spider software designed to extract email addresses, phone numbers, Skype IDs, and more from various sources.',
+    name: 'Email Extractor ',
+    description: 'Email Extractor 5.7  is an all-in-one e-mail spider software designed to extract email addresses, phone numbers, Skype IDs, and more from various sources.',
     features: [
         'Extract emails, phone numbers, and Skype IDs from websites, email accounts, and local files.',
         'Scan search engines, websites, and email accounts for data.',
@@ -539,7 +539,7 @@ export const hiddenTools: Tool[] = [
     image: '/placeholder.svg?height=200&width=200',
     version: 'V 5.7',
     size: '50 MB',
-    category: 'Cracked Software',
+    category: ' Software',
     date: 'September 24, 2024',
     updates: 'Regular updates to improve features and bug fixes.',
   },
@@ -565,17 +565,17 @@ export const hiddenTools: Tool[] = [
   },
   {
     id: 'hidden-tool-5',
-    name: 'DORK PREMIUM PACK 2024',
-    description: 'DORK PREMIUM PACK 2024 is a premium collection of Google dorks for various types of penetration testing and exploitation purposes.',
+    name: 'DORK PREMIUM PACK ',
+    description: 'DORK PREMIUM PACK  is a premium collection of Google dorks for various types of penetration testing and exploitation purposes.',
     features: [
       'Dork Maker V2 By Calix',
-      'Dork Worker 1.1.13 [Latest] Cracked',
+      'Dork Worker 1.1.13 [Latest] ',
       'Ez Dork Gen Black Edition By Plus Ultra',
       'Dorkgen by Calix',
       'Dorks Generator by UCT',
       'Dork Gen Crack Final',
       'Dork Worker v2 by JeffTheKiddo',
-      'QuickDork Cracked',
+      'QuickDork ',
       'Ez Dork Gen Deluxe By Plus Ultra',
       'Gorker Private – Black Edition',
       'TSP Dork generator v11.0',
@@ -606,7 +606,7 @@ export const hiddenTools: Tool[] = [
     size: '101 MB',
     category: 'Pentest Tools',
     date: 'October 8, 2024',
-    updates: 'Includes the latest versions and cracked tools for advanced dork generation.'
+    updates: 'Includes the latest versions and  tools for advanced dork generation.'
   },
   {
     id: 'hidden-tool-6',
@@ -689,7 +689,7 @@ export const hiddenTools: Tool[] = [
   {
     id: 'hidden-tool-8',
     name: 'Advance Bulk Mailer',
-    description: 'Advance Bulk Mailer 4.5 Cracked is a robust email marketing tool designed to send bulk emails with efficiency and precision. It includes features for managing large-scale campaigns, audience segmentation, message personalization, and email performance tracking.',
+    description: 'Advance Bulk Mailer  is a robust email marketing tool designed to send bulk emails with efficiency and precision. It includes features for managing large-scale campaigns, audience segmentation, message personalization, and email performance tracking.',
     features: [
       'Automated Mailing Lists',
       'Customizable Templates',
@@ -701,7 +701,7 @@ export const hiddenTools: Tool[] = [
     image: '/placeholder.svg?height=200&width=200',
     version: 'V 4.5',
     size: '17 MB',
-    category: 'Cracked Software',
+    category: ' Software',
     date: 'September 28, 2024',
     updates: 'Focus on efficient bulk emailing, personalized messaging, and performance tracking for enhanced marketing impact.'
   },
@@ -786,7 +786,7 @@ export const hiddenTools: Tool[] = [
     size: '215 MB',
     category: 'Malware',
     date: 'September 28, 2024',
-    updates: 'Includes various cracked RAT versions for unauthorized access, system control, data theft, and exploitation of RDP connections.'
+    updates: 'Includes various RAT versions for unauthorized access, system control, data theft, and exploitation of RDP connections.'
   },
   {
     id: 'hidden-tool-13',
@@ -798,7 +798,7 @@ export const hiddenTools: Tool[] = [
       'Bypasses payment for premium VPN features',
       'Can carry malware or other malicious components',
       'Compromises user data and privacy',
-      'Encourages the use of cracked software, supporting cybercrime'
+      'Encourages the use of software, supporting cybercrime'
     ],
     options: [],
     icon: '🔓',
@@ -812,7 +812,7 @@ export const hiddenTools: Tool[] = [
   {
     id: 'hidden-tool-14',
     name: 'IPTV Checker',
-    description: 'IPTV Checker 2024 is a cracked tool designed to exploit IPTV services and bypass subscription requirements. It tests access to IPTV streams, allowing unauthorized viewing of content without payment or subscription.',
+    description: 'IPTV Checker 2024 is a tool designed to exploit IPTV services and bypass subscription requirements. It tests access to IPTV streams, allowing unauthorized viewing of content without payment or subscription.',
     features: [
       'Cracks IPTV account access',
       'Bypasses subscription and authentication checks',
@@ -877,7 +877,7 @@ export const hiddenTools: Tool[] = [
   {
     id: 'hidden-tool-17',
     name: 'BLAZING DORK',
-    description: 'BLAZING DORK V1.5 CRACKED is a tool for advanced Google dorking, SQL injection, vulnerability scanning, and more. It utilizes specialized search queries to find hidden information on websites, perfect for penetration testers and security enthusiasts.',
+    description: 'BLAZING DORK  is a tool for advanced Google dorking, SQL injection, vulnerability scanning, and more. It utilizes specialized search queries to find hidden information on websites, perfect for penetration testers and security enthusiasts.',
     features: [
       '40+ UHQ modules for various advanced tasks',
       'Dork maker for creating custom search queries',
@@ -981,14 +981,14 @@ export const hiddenTools: Tool[] = [
     image: '/placeholder.svg?height=200&width=200',
     version: 'V.2024',
     size: '19 MB',
-    category: 'Cracked Software',
+    category: ' Software',
     date: 'September 19, 2024',
     updates: 'Improved randomness and attack capabilities, making it harder for web servers to distinguish between legitimate and malicious traffic.'
   },
   {
     id: 'hidden-tool-21',
     name: 'Venom RAT',
-    description: 'Venom RAT 5.6 is a sophisticated Remote Access Trojan (RAT) that allows attackers to gain unauthorized access to a victim\'s system, providing them with full control. It features keylogging, remote desktop access, file system manipulation, and advanced data theft capabilities. Venom RAT is commonly used for cyber espionage, data exfiltration, and system sabotage. Its persistence mechanisms make it difficult to detect and remove.',
+    description: 'Venom RAT is a sophisticated Remote Access Trojan (RAT) that allows attackers to gain unauthorized access to a victim\'s system, providing them with full control. It features keylogging, remote desktop access, file system manipulation, and advanced data theft capabilities. Venom RAT is commonly used for cyber espionage, data exfiltration, and system sabotage. Its persistence mechanisms make it difficult to detect and remove.',
     features: [
       'Keylogging: Capture all keystrokes on the victim\'s machine to steal sensitive information.',
       'Remote Desktop Access: Full access to the victim\'s desktop, allowing monitoring, file manipulation, and application control.',
@@ -1106,10 +1106,10 @@ export const hiddenTools: Tool[] = [
   },
   {
     id: 'hidden-tool-25',
-    name: 'Woxy 3.0',
-    description: 'Woxy 3.0 is a malicious brute-forcing tool used by cybercriminals to crack accounts and gain unauthorized access to various online platforms. It includes over 200 configuration settings for different services such as Amazon, PayPal, Netflix, and eBay, enabling attackers to attempt account breaches through automated methods. This tool leverages advanced cracking techniques and offers a variety of configurations for targeting specific platforms. It is commonly used in credential stuffing and brute-force attacks.',
+    name: 'Woxy ',
+    description: 'Woxy  is a malicious brute-forcing tool used by cybercriminals to crack accounts and gain unauthorized access to various online platforms. It includes over 200 configuration settings for different services such as Amazon, PayPal, Netflix, and eBay, enabling attackers to attempt account breaches through automated methods. This tool leverages advanced cracking techniques and offers a variety of configurations for targeting specific platforms. It is commonly used in credential stuffing and brute-force attacks.',
     features: [
-      'Cracked Version: Woxy 3.0 is available in a cracked form, bypassing security and licensing mechanisms.',
+      ' Version: Woxy is available in a  form, bypassing security and licensing mechanisms.',
       '200+ Configuration Settings: Includes a large list of pre-configured settings for brute-forcing various platforms such as Amazon, PayPal, and Netflix.',
       'Supports Multiple Platforms: Targets more than 100 services, including popular platforms like Amazon, eBay, Discord, and PayPal.',
       'Account Cracking: Facilitates automated login attempts to break into accounts on various platforms.',
@@ -1117,7 +1117,7 @@ export const hiddenTools: Tool[] = [
       'Tutorial Included: A guide on using the tool and optimizing the configurations for maximum effectiveness.',
       'Cracking Efficiency: Designed to maximize success rates with optimized configurations for each targeted platform.',
       'Multi-Target Support: Capable of targeting multiple platforms simultaneously, increasing the efficiency of attacks.',
-      'Frequent Updates: Woxy 3.0 is regularly updated with new configuration options for additional platforms and services.'
+      'Frequent Updates: Woxy  is regularly updated with new configuration options for additional platforms and services.'
     ],
     options: [],
     icon: '🔐',
@@ -1126,7 +1126,7 @@ export const hiddenTools: Tool[] = [
     size: '28 MB',
     category: 'Bruter',
     date: 'September 18, 2024',
-    updates: 'Woxy 3.0 includes over 200 configurations and supports a broad range of services for brute-forcing and credential stuffing attacks. It has been cracked for easier use without needing a valid license.'
+    updates: 'Woxy 3.0 includes over 200 configurations and supports a broad range of services for brute-forcing and credential stuffing attacks. It has been for easier use without needing a valid license.'
   },
   {
     id: 'hidden-tool-26',
@@ -1250,7 +1250,7 @@ export const hiddenTools: Tool[] = [
   },
   {
     id: 'hidden-tool-31',
-    name: 'XTOOL V3 CRACKED 22 IN 1 MULTI CHECKER',
+    name: 'XTOOL 22 IN 1 MULTI CHECKER',
     description: 'XTOOL V3 is an all-in-one multi-checker and bruter tool that offers 22 powerful features for various hacking and cracking tasks. It includes file manipulation tools, combo list management, dork generation, proxy tools, and hash cracking functionalities, making it a versatile tool for cybersecurity professionals and hackers. This tool helps users handle, modify, and crack different types of data sets and accounts efficiently.',
     features: [
       'File Tools: Includes File Cutter and File Joiner for handling and merging files.',
@@ -1273,8 +1273,8 @@ export const hiddenTools: Tool[] = [
   },
   {
     id: 'hidden-tool-32',
-    name: 'XWorm V3.1 Cracked',
-    description: 'XWorm V3.1 Cracked is a sophisticated remote access trojan (RAT) that is sold as a malware-as-a-service (MaaS). It is designed to allow cybercriminals to remotely control infected systems and carry out a variety of malicious activities. This malware is highly customizable and can be used for stealing sensitive data, launching DDoS attacks, deploying ransomware, hijacking accounts, and more. XWorm is typically delivered through phishing emails or malicious attachments, and once installed, it establishes persistence on the victim’s system.',
+    name: 'XWorm ',
+    description: 'XWorm  is a sophisticated remote access trojan (RAT) that is sold as a malware-as-a-service (MaaS). It is designed to allow cybercriminals to remotely control infected systems and carry out a variety of malicious activities. This malware is highly customizable and can be used for stealing sensitive data, launching DDoS attacks, deploying ransomware, hijacking accounts, and more. XWorm is typically delivered through phishing emails or malicious attachments, and once installed, it establishes persistence on the victim’s system.',
     features: [
       'Builder: Tools for creating and customizing the malware.',
       'Connection: Stable, encrypted connections with anti-analysis techniques.',
@@ -1301,7 +1301,7 @@ export const hiddenTools: Tool[] = [
     name: 'Black Binder 2024',
     description: 'Black Binder 2024 is a .NET file binder designed for educational purposes. It allows users to combine multiple files into a single executable, often used for legitimate purposes such as packaging multiple tools into a single program. It is important to note that the creator and developers of this software are not responsible for any damages caused by its misuse. The software is not intended for malicious purposes or for use on systems without explicit permission.',
     features: [
-      'Simple .NET File Binder',
+      '.NET File Binder',
       'Small Stub (15 KB)',
       'Supports multiple files'
     ],
@@ -1316,8 +1316,8 @@ export const hiddenTools: Tool[] = [
   },
   {
     id: 'hidden-tool-33',
-    name: 'Silent Crypto Miner',
-    description: 'Silent Crypto Miner Builder 2024 is a stealthy cryptocurrency mining tool that can mine various coins using different algorithms, including ETH, ETC, XMR, and RTM. It is designed to run silently in the background, making it less detectable. The miner can be configured to operate on both CPU and GPU, and it supports Nvidia and AMD GPUs. The tool includes various stealth features, such as hiding the miner behind system processes and pausing mining when specific programs are active. It also includes remote configuration and web panel support for monitoring miners.',
+    name: 'Crypto Miner',
+    description: 'Crypto Miner Builder 2024 is a stealthy cryptocurrency mining tool that can mine various coins using different algorithms, including ETH, ETC, XMR, and RTM. It is designed to run silently in the background, making it less detectable. The miner can be configured to operate on both CPU and GPU, and it supports Nvidia and AMD GPUs. The tool includes various stealth features, such as hiding the miner behind system processes and pausing mining when specific programs are active. It also includes remote configuration and web panel support for monitoring miners.',
     features: [
       'Native C++ Miner with no external requirements (64-bit OS)',
       'Silent/Hidden injection behind system processes (e.g., conhost.exe, svchost.exe)',
@@ -1431,8 +1431,8 @@ export const hiddenTools: Tool[] = [
   },
   {
     id: 'hidden-tool-38',
-    name: 'ENCCN Ransomware Builder',
-    description: 'ENCCN Ransomware Builder 2024 is a malware tool designed to create ransomware that encrypts a victim\'s files and demands a ransom for decryption. It uses encryption techniques to lock crucial files and prevent access until payment is made. The ransomware builder allows attackers to customize the encryption process and control the ransom demands.',
+    name: 'ENC Ransomware Builder',
+    description: 'ENC Ransomware Builder 2024 is a malware tool designed to create ransomware that encrypts a victim\'s files and demands a ransom for decryption. It uses encryption techniques to lock crucial files and prevent access until payment is made. The ransomware builder allows attackers to customize the encryption process and control the ransom demands.',
     features: [
       'Ransomware creation tool for encrypting files and demanding ransom',
       'Uses cryptoviral extortion to lock files and prevent access',
@@ -1453,8 +1453,8 @@ export const hiddenTools: Tool[] = [
   },
   {
     id: 'hidden-tool-39',
-    name: 'Xenos Grabber',
-    description: 'Xenos Grabber 2024 is a powerful Discord token grabber that allows attackers to steal tokens from Discord accounts. It uses the Discord login system and can track and manage stolen tokens. This grabber can retrieve account information even if the password is changed and is capable of stealing gifts and detecting flagged or working tokens.',
+    name: 'Xenos ',
+    description: 'Xenos  2024 is a powerful Discord token grabber that allows attackers to steal tokens from Discord accounts. It uses the Discord login system and can track and manage stolen tokens. This grabber can retrieve account information even if the password is changed and is capable of stealing gifts and detecting flagged or working tokens.',
     features: [
       'Infinite Discord Webhook (Cannot be deleted)',
       'Manage stolen tokens via a control panel',
@@ -1476,8 +1476,8 @@ export const hiddenTools: Tool[] = [
   },
   {
     id: 'hidden-tool-40',
-    name: 'Spy Max 2.0 Cracked with Tutorial 2023',
-    description: 'Spy Max 2.0 is a powerful malware designed for spying on the activities of victims on both Android and Windows systems. This tool offers a range of features, including hiding notifications, monitoring activity, and connecting applications. The program is compatible with various versions of Windows and Android, allowing attackers to remotely monitor and control the victim’s device.',
+    name: 'Spy Max  ',
+    description: 'Spy Max is a powerful malware designed for spying on the activities of victims on both Android and Windows systems. This tool offers a range of features, including hiding notifications, monitoring activity, and connecting applications. The program is compatible with various versions of Windows and Android, allowing attackers to remotely monitor and control the victim’s device.',
     features: [
       'Hide notifications (Doze mode)',
       'Connect and monitor applications, videos, pictures, etc.',
@@ -1531,8 +1531,8 @@ export const hiddenTools: Tool[] = [
   },
   {
     id: 'hidden-tool-42',
-    name: 'Beaver SMS Bomber Pro 2024',
-    description: 'Beaver SMS Bomber Pro 2024 is a tool that allows users to send massive amounts of text messages to a single recipient in a short period. With enhanced speed, efficiency, and improved anonymity features, this tool can overwhelm a recipient’s inbox. While it can be used for testing purposes, its misuse can lead to serious legal and ethical consequences, including harassment and legal action.',
+    name: 'Beaver SMS Bomber Pro ',
+    description: 'Beaver SMS Bomber Pro  is a tool that allows users to send massive amounts of text messages to a single recipient in a short period. With enhanced speed, efficiency, and improved anonymity features, this tool can overwhelm a recipient’s inbox. While it can be used for testing purposes, its misuse can lead to serious legal and ethical consequences, including harassment and legal action.',
     features: [
       'Increased speed and efficiency for SMS bombing',
       'Advanced customization: Personalize message content and sending intervals',
@@ -1546,37 +1546,11 @@ export const hiddenTools: Tool[] = [
     image: '/placeholder.svg?height=200&width=200',
     version: 'V 2024',
     size: '17 MB',
-    category: 'Cracked Software',
+    category: ' Software',
     date: 'September 16, 2024',
     updates: 'Enhanced speed, international support, and improved anonymity.'
   },
-  {
-    id: 'hidden-tool-43',
-    name: 'Quasar Rat Golden Edition V 1.4.1.0',
-    description: 'Quasar Rat Golden Edition V 1.4.1.0 is a sophisticated remote access tool (RAT) that allows attackers to control infected systems. The latest version offers advanced features like text-to-speech, taskbar and desktop manipulation, and the ability to spread via USB. It also includes several anti-detection measures, such as anti-debugging, anti-sandbox, and anti-VM, making it harder to detect in virtual environments.',
-    features: [
-      'Text to Speech functionality',
-      'Control desktop features: hide/show desktop, taskbar, and change wallpaper',
-      'Swap mouse buttons and turn off monitor',
-      'Manage clipboard: clear and set clipboard contents',
-      'Delete system event logs and restore points',
-      'Disable/Enable TaskManager, CMD, and Regedit',
-      'Startup persistence to maintain access after reboot',
-      'Botkiller feature to remove other malware and rats',
-      'Process persistence through Task Scheduler',
-      'USB spread with customizable name for spreading the RAT via USB drives',
-      'Compression for smaller output file sizes',
-      'Advanced anti-detection: Anti-VM, Anti-Sandboxie, Anti-Debug'
-    ],
-    options: [],
-    icon: '💻',
-    image: '/placeholder.svg?height=200&width=200',
-    version: 'V 1.4.1.0',
-    size: '18 MB',
-    category: 'Malware',
-    date: 'September 16, 2024',
-    updates: 'Added Text To Speech, USB Spread, Anti-Debug, Anti-Sandboxie, and several bug fixes.'
-  },
+  
   {
     id: 'hidden-tool-43',
     name: 'Stealerium Stealer 2024',
@@ -1746,8 +1720,8 @@ export const hiddenTools: Tool[] = [
   },
   {
     id: 'hidden-tool-50',
-    name: 'Aurora Stealer Cracked 2024',
-    description: 'Aurora Stealer Cracked 2024 is a Trojan malware designed to steal sensitive information from its victims, including passwords, credit card numbers, and crypto wallets. It is typically spread through phishing emails or by exploiting software vulnerabilities. Once installed, it collects data from web browsers, email clients, and crypto wallets, and can even capture screenshots and record keystrokes. Aurora Stealer is stealthy and uses encryption and anti-debugging techniques to evade detection.',
+    name: 'Aurora Stealer',
+    description: 'Aurora Stealer is a Trojan malware designed to steal sensitive information from its victims, including passwords, credit card numbers, and crypto wallets. It is typically spread through phishing emails or by exploiting software vulnerabilities. Once installed, it collects data from web browsers, email clients, and crypto wallets, and can even capture screenshots and record keystrokes. Aurora Stealer is stealthy and uses encryption and anti-debugging techniques to evade detection.',
     features: [
       'Collects data from web browsers (cookies, passwords, and wallets)',
       'Steals information from over 90 crypto wallets (PC/WEB)',
@@ -1904,8 +1878,8 @@ export const hiddenTools: Tool[] = [
   },
   {
     id: 'hidden-tool-56',
-    name: 'Venom RAT 6.0.3 CRACKED',
-    description: 'Venom RAT 6.0.3 CRACKED is a powerful Remote Access Trojan (RAT) designed for both penetration testing and malicious use. It offers hackers full access to target systems with features such as a keylogger, remote shell, and hidden browser functionalities. Additionally, it allows remote control of various aspects of the infected system, including the ability to disable security features, execute files, and monitor user actions. The tool also includes advanced capabilities like reverse connections and support for hidden virtual network computing (HVNC).',
+    name: 'Venom RAT ',
+    description: 'Venom RAT is a powerful Remote Access Trojan (RAT) designed for both penetration testing and malicious use. It offers hackers full access to target systems with features such as a keylogger, remote shell, and hidden browser functionalities. Additionally, it allows remote control of various aspects of the infected system, including the ability to disable security features, execute files, and monitor user actions. The tool also includes advanced capabilities like reverse connections and support for hidden virtual network computing (HVNC).',
     features: [
       'Hidden access to various browsers including Firefox, Chrome, Edge, and Explorer',
       'System information gathering, file management, and task management',
@@ -1927,12 +1901,12 @@ export const hiddenTools: Tool[] = [
     size: '90 MB',
     category: 'Malware',
     date: 'September 15, 2024',
-    updates: 'Cracked version with enhanced features, including better evasion and HVNC support'
+    updates: ' version with enhanced features, including better evasion and HVNC support'
   },
   {
     id: 'hidden-tool-57',
-    name: 'Doge Rat 2024',
-    description: 'Doge Rat 2024 is an advanced Remote Access Trojan (RAT) targeting mobile devices. It allows unauthorized access to and control over target devices, offering real-time monitoring and remote commands. Capabilities include device tracking, access to messages, contacts, files, and the ability to send SMS and notifications. Additionally, it supports keylogging, camera and microphone activation, and automatic startup on device boot. This malware is undetectable by most antivirus software and provides a smooth interface via a Telegram bot for easier command execution.',
+    name: 'Doge Rat ',
+    description: 'Doge Rat  is an advanced Remote Access Trojan (RAT) targeting mobile devices. It allows unauthorized access to and control over target devices, offering real-time monitoring and remote commands. Capabilities include device tracking, access to messages, contacts, files, and the ability to send SMS and notifications. Additionally, it supports keylogging, camera and microphone activation, and automatic startup on device boot. This malware is undetectable by most antivirus software and provides a smooth interface via a Telegram bot for easier command execution.',
     features: [
       'Real-time access to target device',
       'Custom web view and notification sending capabilities',
@@ -1959,8 +1933,8 @@ export const hiddenTools: Tool[] = [
   },
   {
     id: 'hidden-tool-58',
-    name: 'ANARCHY PANEL RAT 4.7 Cracked',
-    description: 'ANARCHY PANEL RAT 4.7 is an advanced Remote Access Tool (RAT) that provides unauthorized access and extensive control over target systems. It includes features for monitoring, file management, password recovery, and DDoS attacks. Additionally, it can manipulate system settings, manage processes, and execute ransomware encryption. With numerous persistence options, ANARCHY PANEL RAT allows remote users to control almost all aspects of the victim’s device, often undetected.',
+    name: 'ANARCHY PANEL RAT ',
+    description: 'ANARCHY PANEL RAT is an advanced Remote Access Tool (RAT) that provides unauthorized access and extensive control over target systems. It includes features for monitoring, file management, password recovery, and DDoS attacks. Additionally, it can manipulate system settings, manage processes, and execute ransomware encryption. With numerous persistence options, ANARCHY PANEL RAT allows remote users to control almost all aspects of the victim’s device, often undetected.',
     features: [
       'Icon Changer and Multi Binder',
       'Fully Undetectable Downloader (HTA-VBS-JS-WSF)',
@@ -2039,7 +2013,7 @@ export const hiddenTools: Tool[] = [
     image: '/placeholder.svg?height=200&width=200',
     version: 'V.2024',
     size: '461 MB',
-    category: 'Cracked Software',
+    category: ' Software',
     date: 'September 15, 2024',
     updates: 'Updated version includes a broader range of SEO and content automation tools for improved efficiency across multiple online platforms'
   },
@@ -2080,14 +2054,14 @@ export const hiddenTools: Tool[] = [
     image: '/placeholder.svg?height=200&width=200',
     version: 'v8.0',
     size: '186 MB',
-    category: 'Cracked Software',
+    category: ' Software',
     date: 'September 15, 2024',
     updates: 'Latest version includes modules for manipulating traffic statistics on social platforms and e-commerce sites'
   },
   {
     id: 'hidden-tool-61',
     name: 'Sorillus Rat',
-    description: 'Sorillus Rat Cracked 2024 is a Remote Access Trojan (RAT) written in Java, offering remote control over devices running on various operating systems, including Windows, Linux, and Mac. Designed for use by penetration testers, it allows full access to targeted systems and can potentially operate on Android in future versions.',
+    description: 'Sorillus Rat 2024 is a Remote Access Trojan (RAT) written in Java, offering remote control over devices running on various operating systems, including Windows, Linux, and Mac. Designed for use by penetration testers, it allows full access to targeted systems and can potentially operate on Android in future versions.',
     features: [
       'Platform-independent (supports Windows, Linux, and Mac OS)',
       'Pop-up: Display messages on the victim’s screen',
@@ -2202,7 +2176,7 @@ export const hiddenTools: Tool[] = [
       image: '/placeholder.svg?height=200&width=200',
       version: 'v.2024',
       size: '128 MB',
-      category: 'Cracked Software',
+      category: 'Software',
       date: 'September 14, 2024',
       updates: 'Regular updates to ensure continued functionality and compatibility'
     },
@@ -2476,7 +2450,34 @@ export const hiddenTools: Tool[] = [
       category: 'Malware',
       date: 'September 14, 2024',
       updates: 'Updated to support newer cookie-stealing techniques, making it more effective at bypassing security on modern websites.'
-    }
+    },
+    {
+      id: 'hidden-tool-72',
+      name: 'Quasar Rat Golden Edition V 1.4.1.0',
+      description: 'Quasar Rat Golden Edition V 1.4.1.0 is a sophisticated remote access tool (RAT) that allows attackers to control infected systems. The latest version offers advanced features like text-to-speech, taskbar and desktop manipulation, and the ability to spread via USB. It also includes several anti-detection measures, such as anti-debugging, anti-sandbox, and anti-VM, making it harder to detect in virtual environments.',
+      features: [
+        'Text to Speech functionality',
+        'Control desktop features: hide/show desktop, taskbar, and change wallpaper',
+        'Swap mouse buttons and turn off monitor',
+        'Manage clipboard: clear and set clipboard contents',
+        'Delete system event logs and restore points',
+        'Disable/Enable TaskManager, CMD, and Regedit',
+        'Startup persistence to maintain access after reboot',
+        'Botkiller feature to remove other malware and rats',
+        'Process persistence through Task Scheduler',
+        'USB spread with customizable name for spreading the RAT via USB drives',
+        'Compression for smaller output file sizes',
+        'Advanced anti-detection: Anti-VM, Anti-Sandboxie, Anti-Debug'
+      ],
+      options: [],
+      icon: '💻',
+      image: '/placeholder.svg?height=200&width=200',
+      version: 'V 1.4.1.0',
+      size: '18 MB',
+      category: 'Malware',
+      date: 'September 16, 2024',
+      updates: 'Added Text To Speech, USB Spread, Anti-Debug, Anti-Sandboxie, and several bug fixes.'
+    },
     
     
     

@@ -62,7 +62,7 @@
     "@typescript-eslint/eslint-plugin": "^8.14.0",
     "@typescript-eslint/parser": "^8.14.0",
     "cross-env": "^7.0.3",
-    "eslint": "^8.57.1",
+    "eslint": "^9.15.0",
     "eslint-config-next": "^15.0.3",
     "eslint-plugin-unicorn": "^56.0.0",
     "postcss": "^8.4.27",
@@ -70,5 +70,8 @@
     "tailwindcss-animate": "^1.0.7",
     "terser-webpack-plugin": "^5.3.10",
     "typescript": "^5.1.6"
+  },
+  "eslintConfig": {
+    "extends": "./.eslintrc.json"
   }
 }

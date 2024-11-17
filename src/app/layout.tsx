@@ -1,18 +1,27 @@
-import './globals.css'
+import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import { GoogleAnalytics } from '@next/third-parties/google'
+
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-import { GoogleAnalytics } from '@next/third-parties/google'
-import { Metadata } from 'next'
+import './globals.css'
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ 
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter'
+})
 
 export const metadata: Metadata = {
-  title: 'paul2dev - Cybersecurity Awareness',
+  title: {
+    default: 'paul2dev - Cybersecurity Awareness',
+    template: '%s | paul2dev Cybersecurity'
+  },
   description: 'Learn about cybersecurity threats and how to protect yourself online.',
   keywords: ['cybersecurity', 'awareness', 'online safety', 'internet security'],
-  icons: {
-    icon: '/favicon.ico',
+  metadataBase: new URL('https://paul2dev.com'),
+  alternates: {
+    canonical: '/'
   },
   openGraph: {
     title: 'paul2dev - Cybersecurity Awareness',
@@ -21,7 +30,7 @@ export const metadata: Metadata = {
     siteName: 'paul2dev',
     images: [
       {
-        url: 'https://paul2dev.com/og-image.jpg',
+        url: '/og-image.jpg',
         width: 1200,
         height: 630,
         alt: 'Cybersecurity Awareness Image',
@@ -34,12 +43,22 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'paul2dev - Cybersecurity Awareness',
     description: 'Learn about cybersecurity threats and how to protect yourself online.',
-    images: ['https://paul2dev.com/twitter-image.jpg'],
+    images: ['/twitter-image.jpg'],
     creator: '@techwhizkids',
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  verification: {
+    google: 'your-google-site-verification-code', // Optional
   },
 }
 
@@ -49,11 +68,26 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="overflow-x-hidden">
-      <body className={`${inter.className} overflow-x-hidden`}>
-        <div className="w-full overflow-x-hidden">
+    <html 
+      lang="en" 
+      className={`${inter.variable} scroll-smooth antialiased`}
+    >
+      <body 
+        className="
+          min-h-screen 
+          bg-gradient-to-br 
+          from-[#0A192F] 
+          via-[#112240] 
+          to-[#0A192F] 
+          text-white 
+          overflow-x-hidden
+          selection:bg-electric-blue 
+          selection:text-white
+        "
+      >
+        <div className="flex flex-col min-h-screen">
           <Header />
-          <main className="min-h-screen w-full overflow-x-hidden">
+          <main className="flex-grow">
             {children}
           </main>
           <Footer />

@@ -35,21 +35,20 @@ body {
   max-width: 100%;
 }
 
-
 * {
   box-sizing: border-box;
   scrollbar-width: thin;
   scrollbar-color: var(--color-accent) var(--color-primary);
 }
 
-
 body {
   @apply bg-gradient-to-br from-[#0A1128] via-[#1B2845] to-[#0A1128];
-  font-family: 'Space Grotesk', 'Roboto Mono', monospace;
+  font-family: 'Space Grotesk', 'Roboto Mono', sans-serif;
   color: #FFFFFF;
   line-height: 1.6;
   overflow-x: hidden;
   perspective: 1000px;
+  font-size: clamp(16px, 2.5vw, 18px);
 }
 
 ::-webkit-scrollbar {
@@ -71,11 +70,19 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 { 
-  @apply text-5xl mb-4 bg-clip-text text-transparent bg-gradient-to-r from-neon-blue to-neon-green;
+  @apply mb-4 bg-clip-text text-transparent bg-gradient-to-r from-neon-blue to-neon-green;
+  font-size: clamp(2rem, 5vw, 3rem);
 }
 
-h2 { @apply text-4xl text-neon-blue; }
-h3 { @apply text-3xl text-neon-green; }
+h2 { 
+  @apply text-neon-blue;
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+h3 { 
+  @apply text-neon-green;
+  font-size: clamp(1.25rem, 3vw, 2rem);
+}
 
 a {
   @apply text-neon-blue transition-all duration-300 ease-in-out;
@@ -102,7 +109,6 @@ a:hover::before {
   width: 100%;
 }
 
-
 .btn {
   @apply px-6 py-3 rounded-lg font-bold uppercase tracking-wider;
   background: linear-gradient(45deg, var(--color-accent), var(--color-neon-blue));
@@ -111,6 +117,8 @@ a:hover::before {
   overflow: hidden;
   transition: all 0.3s ease;
   box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+  font-size: clamp(0.875rem, 2vw, 1rem);
+  touch-action: manipulation;
 }
 
 .btn::before {
@@ -137,6 +145,7 @@ a:hover::before {
   @apply w-full px-4 py-2 bg-[#1B2845] border-2 border-neon-blue rounded-lg;
   outline: none;
   transition: all 0.3s ease;
+  font-size: clamp(0.875rem, 2vw, 1rem);
 }
 
 .input:focus {
@@ -252,19 +261,12 @@ a:hover::before {
   100% { clip: rect(52px, 9999px, 12px, 0); }
 }
 
-
-@media (max-width: 768px) {
-  h1 { @apply text-4xl; }
-  h2 { @apply text-3xl; }
-  h3 { @apply text-2xl; }
-}
-
 .container {
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
 }
-
 
 @keyframes fadeIn {
   from {
@@ -281,22 +283,81 @@ a:hover::before {
   animation: fadeIn 0.5s ease forwards;
 }
 
-.text-center {
-  text-align: center;
+/* Responsive utility classes */
+.text-center { text-align: center; }
+.mt-4 { margin-top: 1rem; }
+.mb-4 { margin-bottom: 1rem; }
+.p-4 { padding: 1rem; }
+.rounded-lg { border-radius: 0.5rem; }
+
+/* Responsive grid system */
+.grid { display: grid; gap: 1rem; }
+.grid-cols-1 { grid-template-columns: 1fr; }
+.grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-cols-4 { grid-template-columns: repeat(4, 1fr); }
+
+/* Responsive padding and margin */
+.p-responsive { padding: clamp(1rem, 3vw, 2rem); }
+.m-responsive { margin: clamp(1rem, 3vw, 2rem); }
+
+/* Responsive flexbox */
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+
+/* Media queries for responsive design */
+@media (max-width: 768px) {
+  .grid-cols-2, .grid-cols-3, .grid-cols-4 {
+    grid-template-columns: 1fr;
+  }
+
+  .flex-col-mobile { flex-direction: column; }
+
+  .text-center-mobile { text-align: center; }
+
+  .hidden-mobile { display: none; }
+
+  .btn, .input {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .glitch-text::before,
+  .glitch-text::after {
+    display: none;
+  }
+
+  .neon-glow {
+    animation: none;
+    text-shadow: 0 0 5px var(--color-neon-blue);
+  }
 }
 
-.mt-4 {
-  margin-top: 1rem;
+/* High contrast mode for accessibility */
+@media (prefers-contrast: high) {
+  body {
+    background: black;
+    color: white;
+  }
+
+  a, .btn, .input {
+    border: 2px solid white;
+  }
+
+  .neon-glow, .glitch-text {
+    text-shadow: none;
+    animation: none;
+  }
 }
 
-.mb-4 {
-  margin-bottom: 1rem;
-}
-
-.p-4 {
-  padding: 1rem;
-}
-
-.rounded-lg {
-  border-radius: 0.5rem;
+/* Reduced motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

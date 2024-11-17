@@ -5,8 +5,8 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion';
 import { 
-  Menu, X, Cpu, Shield, Zap, Book, 
-  Newspaper, Globe, Rocket, Target 
+  Menu, X, Cpu, Shield, Zap, 
+  Newspaper, Globe, Rocket, Target, FileText 
 } from 'lucide-react';
 
 const LINK_ICONS = {
@@ -14,7 +14,7 @@ const LINK_ICONS = {
   'Threats': Shield,
   'Prevention': Zap,
   'Tools': Cpu,
-  'Resources': Book,
+  'Resources': FileText, 
   'Courses': Rocket,
   'News': Newspaper
 } as const;
@@ -46,7 +46,6 @@ export default function Navigation() {
     { href: '/news', label: 'News' },
   ], []);
 
- 
   useMotionValueEvent(scrollY, "change", (latest) => {
     const SCROLL_THRESHOLD = 50;
     const difference = latest - lastScrollY.current;
@@ -66,7 +65,6 @@ export default function Navigation() {
 
     lastScrollY.current = latest;
   });
-
 
   const handleKeyDown = useCallback((e: KeyboardEvent) => {
     if (e.metaKey || e.ctrlKey) {
@@ -118,17 +116,17 @@ export default function Navigation() {
             ease: "easeInOut"
           }
         }}
+        style={{
+          width: '100%',
+          willChange: 'transform',
+          background: BACKGROUND_GRADIENTS[backgroundIndex],
+        }}
         className={`
           fixed top-0 left-0 right-0 z-50 
-          ${BACKGROUND_GRADIENTS[backgroundIndex]} 
-          transition-all duration-500 ease-in -out
+          transition-all duration-500 ease-in-out
           ${isScrolled ? 'bg-opacity-90 backdrop-blur-md' : ''}
           ${isHidden ? 'transform -translate-y-full' : ''}
         `}
-        style={{
-          width: '100%',
-          willChange: 'transform'
-        }}
       >
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           {/* Logo Area */}

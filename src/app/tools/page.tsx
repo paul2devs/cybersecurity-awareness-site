@@ -1,64 +1,55 @@
 "use client";
 
-import { useState, useCallback } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  Search, 
-  Filter 
-} from 'lucide-react';
+import { useState, useCallback, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Search, Filter, X } from "lucide-react";
 
-import ToolCard from '@/components/ToolCard';
-import HiddenTool from '@/components/HiddenTool';
-import CyberBackground from '@/components/CyberBackground'; 
-import { tools, hiddenTools } from '@/lib/toolData';
-import { Tool } from '@/types';
+import ToolCard from "@/components/ToolCard";
+import HiddenTool from "@/components/HiddenTool";
+import CyberBackground from "@/components/CyberBackground";
+import { tools, hiddenTools } from "@/lib/toolData";
+import { Tool } from "@/types";
 
 export default function ToolsPage() {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [activeCategory, setActiveCategory] = useState('All');
+  const [searchQuery, setSearchQuery] = useState("");
   const [filteredTools, setFilteredTools] = useState<Tool[]>([...tools, ...hiddenTools]);
-
-  const categories = [
-    'All', 
-    'Network Security', 
-    'Penetration Testing', 
-    'Encryption', 
-    'Monitoring'
-  ];
+  const [showModal, setShowModal] = useState(false);
 
   const handleSearch = (query: string) => {
     setSearchQuery(query);
-    filterTools(query, activeCategory);
+    filterTools(query);
   };
 
-  const handleCategoryFilter = (category: string) => {
-    setActiveCategory(category);
-    filterTools(searchQuery, category);
+  const handleOpenModal = () => {
+    setShowModal(true);
   };
 
-  const filterTools = useCallback((query: string, category: string) => {
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+
+  const filterTools = useCallback((query: string) => {
     let result = [...tools, ...hiddenTools];
 
-    if (category !== 'All') {
-      result = result.filter(tool => tool.category === category);
-    }
-
     if (query) {
-      result = result.filter(tool => 
-        tool.name.toLowerCase().includes(query.toLowerCase()) ||
-        tool.description.toLowerCase().includes(query.toLowerCase())
+      result = result.filter((tool) =>
+        tool.name.toLowerCase().includes(query.toLowerCase())
       );
     }
 
     setFilteredTools(result);
   }, []);
 
+  useEffect(() => {
+    filterTools(searchQuery);
+  }, [searchQuery, filterTools]);
+
   return (
-    <div className="relative min-h-screen bg-[#0A192F] text-white overflow-hidden pt-[80px]">  {/* Added pt-[80px] */}
+    <div className="relative min-h-screen bg-[#0A192F] text-white overflow-hidden pt-[80px]">
       <CyberBackground />
-      
+
       <div className="relative z-10 container mx-auto px-4 py-16">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-12"
@@ -73,42 +64,62 @@ export default function ToolsPage() {
 
         <div className="flex space-x-4 mb-8">
           <div className="relative flex-grow">
-            <input 
-              type="text" 
-              placeholder="Search tools..." 
+            <input
+              type="text"
+              placeholder="Search tools..."
               value={searchQuery}
               onChange={(e) => handleSearch(e.target.value)}
               className="w-full px-4 py-3 bg-[#112240] border border-[#233554] rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-[#64FFDA]"
             />
             <Search className="absolute right-4 top-1/2 -translate-y-1/2 text-[#64FFDA]" />
           </div>
-          <button 
-            onClick={() => {/* Advanced filter logic */}}
+          <button
+            onClick={handleOpenModal}
             className="bg-[#112240] p-3 rounded-lg hover:bg-[#233554]"
           >
             <Filter className="text-[#64FFDA]" />
           </button>
         </div>
 
-        <div className="flex justify-center space-x-4 mb-8">
-          {categories.map(category => (
-            <button
-              key={category}
-              onClick={() => handleCategoryFilter(category)}
-              className={`
-                px-4 py-2 rounded-full transition-all duration-300
-                ${activeCategory === category 
-                  ? 'bg-[#64FFDA] text-[#0A192F]' 
-                  : 'bg-[#112240] text-[#8892B0] hover:bg-[#233554]'}
-              `}
+        <AnimatePresence>
+          {showModal && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-10 bg-black/50 backdrop-blur-sm"
+ onClick={handleCloseModal}
             >
-              {category}
-            </button>
-          ))}
-        </div>
+              <div className="flex items-center justify-center min-h-screen">
+                <div className="bg-[#112240] rounded-lg p-6 max-w-md w-full">
+                  <div className="flex justify-between items-center mb-4">
+                    <h2 className="text-xl font-bold text-[#64FFDA]">Select a Tool</h2>
+                    <button onClick={handleCloseModal}>
+                      <X className="text-[#64FFDA]" />
+                    </button>
+                  </div>
+                  <input
+                    type="text"
+                    placeholder="Search tools..."
+                    value={searchQuery}
+                    onChange={(e) => handleSearch(e.target.value)}
+                    className="w-full px-4 py-2 mb-4 bg-[#233554] border border-[#233554] rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-[#64FFDA]"
+                  />
+                  <div className="max-h-60 overflow-y-auto">
+                    {filteredTools.map((tool) => (
+                      <div key={tool.id} className="py-2">
+                        <ToolCard tool={tool} />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         <AnimatePresence>
-          <motion.div 
+          <motion.div
             layout
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
@@ -118,12 +129,12 @@ export default function ToolsPage() {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ 
-                  duration: 0.3, 
-                  delay: index * 0.1 
+                transition={{
+                  duration: 0.3,
+                  delay: index * 0.1,
                 }}
               >
-                {tool.id.startsWith('hidden-tool') ? (
+                {tool.id.startsWith("hidden-tool") ? (
                   <HiddenTool tool={tool} />
                 ) : (
                   <ToolCard tool={tool} />

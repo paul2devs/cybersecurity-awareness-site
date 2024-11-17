@@ -27,7 +27,6 @@ export default function CoffeeModal() {
     navigator.clipboard.writeText(account)
     setCopiedAccount(account)
     
-    
     setTimeout(() => setCopiedAccount(null), 2000)
   }
 
@@ -63,7 +62,7 @@ export default function CoffeeModal() {
             >
               {/* Modal Header */}
               <div className="bg-yellow-50 p-6 border-b border-yellow-100 flex justify-between items-center">
-                <h2 className="text-2xl font-bold text-yellow-800 flex items-center">
+                <h2 className="text-xl md:text-2xl font-bold text-yellow-800 flex items-center">
                   <Coffee className="mr-3 text-yellow-600" />
                   Support My Work
                 </h2>
@@ -77,7 +76,7 @@ export default function CoffeeModal() {
 
               {/* Modal Content */}
               <div className="p-6 space-y-4">
-                <p className="text-gray-600 text-center">
+                <p className="text-gray-600 text-center text-sm md:text-base">
                   Every coffee helps fuel more amazing content and projects! 
                   Choose a bank to transfer:
                 </p>
@@ -96,8 +95,8 @@ export default function CoffeeModal() {
                     `}
                   >
                     <div>
-                      <p className="font-semibold text-gray-800">{account.bank}</p>
-                      <p className="text-gray-600 font-mono">{account.number}</p>
+                      <p className="font-semibold text-gray-800 text-sm md:text-base">{account.bank}</p>
+                      <p className="text-gray-600 font-mono text-sm md:text-base">{account.number}</p>
                     </div>
                     <button 
                       onClick={() => handleCopy(account.number)}
@@ -110,14 +109,13 @@ export default function CoffeeModal() {
                       `}
                     >
                       {copiedAccount === account.number ? (
-                        <Check className="w-5 h-5 text-green-600" />
+                        <Check className="w-5 h-5 text-green-600 " />
                       ) : (
                         <Copy className="w-5 h-5 text-gray-600" />
                       )}
                     </button>
                   </motion.div>
                 ))}
-]
                 <div className="text-center text-sm text-gray-500 mt-4">
                   Thank you for your support! ☕
                 </div>

@@ -1,9 +1,9 @@
 'use client';
 
 import React, { useState, useCallback } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import dynamic from 'next/dynamic';
 import Link from 'next/link';
-
+import { motion, AnimatePresence } from 'framer-motion';
 import { 
   ShieldCheck, 
   Target, 
@@ -15,16 +15,19 @@ import {
   Menu 
 } from 'lucide-react';
 
-import HeroSection from '@/components/HeroSection';
-import StatisticsSection from '@/components/StatisticsSection';
-import ThreatsSection from '@/components/ThreatSection';
-import PreventionSection from '@/components/PreventionSection';
-import CoursesSection from '@/components/CoursesSection';
-import ResourcesSection from '@/components/ResourcesSection';
-import ToolsSection from '@/components/ToolsSection';
-import TestimonialSection from '@/components/TestimonialSection';
-import FAQSection from '@/components/FAQSection';
-
+// Dynamically import sections with SSR
+const HeroSection = dynamic(() => import('@/components/HeroSection'), { 
+  ssr: true,
+  loading: () => <div className="h-[500px] flex items-center justify-center">Loading...</div>
+});
+const StatisticsSection = dynamic(() => import('@/components/StatisticsSection'), { ssr: true });
+const ThreatsSection = dynamic(() => import('@/components/ThreatSection'), { ssr: true });
+const PreventionSection = dynamic(() => import('@/components/PreventionSection'), { ssr: true });
+const CoursesSection = dynamic(() => import('@/components/CoursesSection'), { ssr: true });
+const ToolsSection = dynamic(() => import('@/components/ToolsSection'), { ssr: true });
+const ResourcesSection = dynamic(() => import('@/components/ResourcesSection'), { ssr: true });
+const TestimonialSection = dynamic(() => import('@/components/TestimonialSection'), { ssr: true });
+const FAQSection = dynamic(() => import('@/components/FAQSection'), { ssr: true });
 
 interface Section {
   title: string;
@@ -32,7 +35,6 @@ interface Section {
   component: React.ReactNode;
   learnMorePath: string;
 }
-
 
 const SectionButton: React.FC<{
   section: Section;
@@ -46,15 +48,13 @@ const SectionButton: React.FC<{
         flex items-center space-x-3 px-5 py-2.5 rounded-full
         transition-all duration-300 ease-in-out text-base
         ${isActive 
-          ? 'bg-electric-blue text-white' 
+          ? 'bg-electric-blue text-white shadow-lg' 
           : 'bg-steel-gray text-light-gray hover:bg-opacity-70'}
       `}
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
     >
-      {React.cloneElement(section.icon as React.ReactElement, { 
-        className: 'w-6 h-6 mr-2' 
-      })}
+      {React.cloneElement(section.icon as React.ReactElement, { className: 'w-6 h-6 mr-2' })}
       <span className="font-medium">{section.title}</span>
     </motion.button>
   );
@@ -67,63 +67,25 @@ export default function Home() {
   const [isMobileSectionsOpen, setIsMobileSectionsOpen] = useState(false);
 
   const sections: Section[] = [
-    { 
-      title: 'Threats', 
-      icon: <AlertTriangle />, 
-      component: <ThreatsSection />,
-      learnMorePath: '/threat'
-    },
-    { 
-      title: 'Prevention', 
-      icon: <ShieldCheck />, 
-      component: <PreventionSection />,
-      learnMorePath: '/prevention'
-    },
-    { 
-      title: 'Courses', 
-      icon: <BookOpen />, 
-      component: <CoursesSection />,
-      learnMorePath: '/courses'
-    },
-    { 
-      title: 'Tools', 
-      icon: <Target />, 
-      component: <ToolsSection />,
-      learnMorePath: '/tools'
-    },
-    { 
-      title: 'Resources', 
-      icon: <Globe />, 
-      component: <ResourcesSection />,
-      learnMorePath: '/resources'
-    },
+    { title: 'Threats', icon: <AlertTriangle />, component: <ThreatsSection />, learnMorePath: '/threat' },
+    { title: 'Prevention', icon: <ShieldCheck />, component: <PreventionSection />, learnMorePath: '/prevention' },
+    { title: 'Courses', icon: <BookOpen />, component: <CoursesSection />, learnMorePath: '/courses' },
+    { title: 'Tools', icon: <Target />, component: <ToolsSection />, learnMorePath: '/tools' },
+    { title: 'Resources', icon: <Globe />, component: <ResourcesSection />, learnMorePath: '/resources' },
     { 
       title: 'Report Incident', 
       icon: <ClipboardCheck />, 
       component: (
         <div className="flex flex-col items-center justify-center text-center space-y-6 p-6">
-          <h2 className="text-2xl md:text-3xl font-bold text-cyber-primary">
-            Cybersecurity Incident Reporting
-          </h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-cyber-primary">Cybersecurity Incident Reporting</h2>
           <p className="max-w-xl text-base md:text-lg text-gray-300">
-            Encountered a security breach or suspicious activity? 
-            Quickly report and get immediate guidance from our expert team.
+            Encountered a security breach or suspicious activity? Quickly report and get immediate guidance from our expert team.
           </p>
           <Link href="/report-incident">
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="
-                px-6 py-3
-                bg-electric-blue 
-                text-white 
-                rounded-full 
-                text-base
-                hover:bg-opacity-80 
-                transition-all 
-                duration-300
-                font-semibold
-              "
+              className="px-6 py-3 bg-electric-blue text-white rounded-full text-base hover:bg-opacity-80 transition-all duration-300 font-semibold shadow-lg"
             >
               Report an Incident
             </motion.button>
@@ -137,28 +99,15 @@ export default function Home() {
       icon: <HelpCircle />, 
       component: (
         <div className="flex flex-col items-center justify-center text-center space-y-6 p-6">
-          <h2 className="text-2xl md:text-3xl font-bold text-cyber-primary">
-            Cybersecurity Knowledge Quiz
-          </h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-cyber-primary">Cybersecurity Knowledge Quiz</h2>
           <p className="max-w-xl text-base md:text-lg text-gray-300">
-            Test your cybersecurity awareness and learn about the latest threats 
-            and best practices through our interactive quiz.
+            Test your cybersecurity awareness and learn about the latest threats and best practices through our interactive quiz.
           </p>
           <Link href="/quiz">
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="
-                px-6 py-3
-                bg-electric-blue 
-                text-white 
-                rounded-full 
-                text-base
-                hover:bg-opacity-80 
-                transition-all 
-                duration-300
-                font-semibold
-              "
+              className="px-6 py-3 bg-electric-blue text-white rounded-full text-base hover:bg-opacity-80 transition-all duration-300 font-semibold shadow-lg"
             >
               Take a Quiz
             </motion.button>
@@ -169,7 +118,6 @@ export default function Home() {
     }
   ];
 
- 
   const handleSectionChange = useCallback((index: number) => {
     setActiveSection(index);
     setIsMobileSectionsOpen(false);
@@ -207,7 +155,7 @@ export default function Home() {
                       className={`
                         w-full px-4 py-3 rounded-lg text-base font-medium transition-all text-left
                         ${activeSection === index
-                          ? 'bg-electric-blue text-white'
+                          ? 'bg-electric-blue text-white shadow-lg'
                           : 'bg-steel-gray/30 text-light-gray hover:bg-steel-gray/50'}
                       `}
                     >
@@ -236,11 +184,8 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
-                transition={{ 
-                  type: "tween",
-                  duration: 0.3 
-                }}
-                className="min-h-[600px] bg-[#112240] rounded-2xl p-8 shadow-2xl relative pb-20" 
+                transition={{ type: "tween", duration: 0.3 }}
+                className="min-h-[600px] bg-[#112240] rounded-2xl p-8 shadow-2xl relative pb-20"
               >
                 <div className="space-y-6">
                   {sections[activeSection].component}
@@ -249,20 +194,9 @@ export default function Home() {
                   <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2">
                     <Link href={sections[activeSection].learnMorePath}>
                       <motion.button
-                        whileHover={{ scale: 1.05 }}
+                        whileHover ={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        className="
-                          px-6 py-3 
-                          bg-electric-blue 
-                          text-white 
-                          rounded-full 
-                          flex items-center 
-                          space-x-2 
-                          text-base
-                          hover:bg-opacity-80 
-                          transition-all 
-                          duration-300
-                        "
+                        className="px-6 py-3 bg-electric-blue text-white rounded-full flex items-center space-x-2 text-base hover:bg-opacity-80 transition-all duration-300 shadow-lg"
                       >
                         Learn More
                       </motion.button>

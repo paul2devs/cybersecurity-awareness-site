@@ -87,7 +87,7 @@ const PreventionSection: React.FC = () => {
         <motion.h2
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-4xl font-bold text-electric-blue mb-4 pt-[20px]"
+          className="text-3xl sm:text-4xl font-bold text-electric-blue mb-4 pt-[20px]"
         >
           Proactive Cybersecurity Strategies
         </motion.h2>
@@ -95,7 +95,7 @@ const PreventionSection: React.FC = () => {
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="text-xl text-light-gray max-w-2xl mx-auto"
+          className="text-lg sm:text-xl text-light-gray max-w-2xl mx-auto"
         >
           Use strong prevention methods to protect your digital world.
         </motion.p>
@@ -105,14 +105,14 @@ const PreventionSection: React.FC = () => {
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="grid md:grid-cols-3 gap-8"
+        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8"
       >
         {preventionStrategies.map((strategy) => (
           <motion.div
             key={strategy.id}
             variants={itemVariants}
             className={`
-              bg-steel-gray/30 rounded-xl p-6 cursor-pointer 
+              bg-steel-gray/30 rounded-xl p-4 sm:p-6 cursor-pointer 
               transition-all duration-300 
               ${activeStrategy === strategy.id 
                 ? 'border-2 border-electric-blue' 
@@ -134,10 +134,10 @@ const PreventionSection: React.FC = () => {
                 `} 
               />
             </div>
-            <h3 className="text-xl font-semibold text-white mb-2">
+            <h3 className="text-lg sm:text-xl font-semibold text-white mb-2">
               {strategy.title}
             </h3>
-            <p className="text-light-gray mb-4">
+            <p className="text-light-gray mb-4 text-sm sm:text-base">
               {strategy.description}
             </p>
             {activeStrategy === strategy.id && (
@@ -153,7 +153,7 @@ const PreventionSection: React.FC = () => {
                   {strategy.steps.map((step, index) => (
                     <li 
                       key={index} 
-                      className="flex items-center space-x-2 text-light-gray"
+                      className="flex items-center space-x-2 text-light-gray text-sm sm:text-base"
                     >
                       <CheckCircle className="w-4 h-4 text-green-500" />
                       <span>{step}</span>

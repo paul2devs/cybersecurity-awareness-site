@@ -111,21 +111,21 @@ const ToolsSection: React.FC = () => {
         <motion.h2
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-4xl font-bold text-electric-blue mb-4 pt-[20px]"
+          className="text-3xl sm:text-4xl font-bold text-electric-blue mb-4 pt-[20px]"
         >
           Cybersecurity Toolkit
         </motion.h2>
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="text-xl text-light-gray max-w-2xl mx-auto"
+          className="text-lg sm:text-xl text-light-gray max-w-2xl mx-auto"
         >
           Open-source tools for comprehensive cybersecurity analysis and protection.
         </motion.p>
       </div>
 
       {/* Filters and Search */}
-      < div className="flex flex-col md:flex-row justify-between mb-8 space-y-4 md:space-y-0">
+      <div className="flex flex-col md:flex-row justify-between mb-8 space-y-4 md:space-y-0">
         <div className="flex flex-wrap justify-center md:justify-start space-x-2">
           {toolCategories.map((category) => (
             <motion.button
@@ -185,7 +185,7 @@ const ToolsSection: React.FC = () => {
                 ))}
               </div>
             </div>
-            <h3 className="text-xl font-semibold text-white mb-2">
+            <h3 className="text-lg sm:text-xl font-semibold text-white mb-2">
               {tool.name}
             </h3>
             <p className="text-light-gray mb-4 line-clamp-3">
@@ -237,4 +237,4 @@ const ToolsSection: React.FC = () => {
   );
 };
 
-export default ToolsSection;
+export default ToolsSection; 

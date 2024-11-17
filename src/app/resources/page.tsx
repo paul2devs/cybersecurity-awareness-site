@@ -14,12 +14,7 @@ import { Input } from '@/components/ui/Input';
 import { ResourceCard } from '@/components/ResourceCard';
 import { categories, resources } from '@/lib/data';
 import { Resource } from '@/types';
-import dynamic from 'next/dynamic';
 
-
-const ParticleBackground = dynamic(() => import('@/components/ParticleBackground'), {
-  ssr: false
-});
 type FilterType = 'All' | 'Trending' | 'New';
 
 export default function ResourcesPage() {
@@ -53,10 +48,8 @@ export default function ResourcesPage() {
   }));
 
   return (
-    <div className="relative min-h-screen bg-[#0a192f] text-white overflow-hidden">
-      <ParticleBackground />
-      
-      <div className="relative z-10 container mx-auto px-4 py-16">
+    <div className="min-h-screen bg-[#0a192f] text-white">
+      <div className="container mx-auto px-4 py-16">
         <motion.div 
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}

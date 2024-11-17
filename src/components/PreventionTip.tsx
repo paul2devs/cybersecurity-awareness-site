@@ -22,8 +22,8 @@ export default function PreventionTipComponent({ tip }: PreventionTipProps) {
         <div className="flex items-center gap-4 mb-4">
           <Shield className="w-10 h-10 text-teal-300" />
           <div>
-            <h3 className="text-xl font-semibold text-teal-100">{tip.title}</h3>
-            <p className="text-teal-200/80">{tip.shortDescription}</p>
+            <h3 className="text-2xl md:text-xl font-semibold text-teal-100">{tip.title}</h3>
+            <p className="text-teal-200/80 text-base md:text-sm">{tip.shortDescription}</p>
           </div>
         </div>
 
@@ -40,7 +40,7 @@ export default function PreventionTipComponent({ tip }: PreventionTipProps) {
                 {tip.steps.map((step: string, index: number) => (
                   <div key={index} className="flex items-center gap-2 text-teal-200">
                     <CheckCircle2 className="w-4 h-4 text-teal-300" />
-                    {step}
+                    <span className="text-sm md:text-base">{step}</span>
                   </div>
                 ))}
               </div>
@@ -51,7 +51,7 @@ export default function PreventionTipComponent({ tip }: PreventionTipProps) {
                   {tip.applicableThreats.map((threat: string, index: number) => (
                     <div key={index} className="flex items-center gap-2 text-teal-200">
                       <CheckCircle2 className="w-4 h-4 text-teal-300" />
-                      {threat}
+                      <span className="text-sm md:text-base">{threat}</span>
                     </div>
                   ))}
                 </div>
@@ -60,7 +60,7 @@ export default function PreventionTipComponent({ tip }: PreventionTipProps) {
               {tip.additionalInfo && (
                 <div>
                   <h4 className="text-lg font-semibold text-teal-100 mb-2">Additional Information</h4>
-                  <p className="text-teal-200/80">{tip.additionalInfo}</p>
+                  <p className="text-teal-200/80 text-sm md:text-base">{tip.additionalInfo}</p>
                 </div>
               )}
             </motion.div>
@@ -82,7 +82,7 @@ export default function PreventionTipComponent({ tip }: PreventionTipProps) {
               Learn More <ChevronDown className="w-4 h-4" />
             </>
           )}
-        </motion.button >
+        </motion.button>
       </div>
     </motion.div>
   );

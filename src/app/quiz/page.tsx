@@ -15,15 +15,6 @@ import {
   Zap 
 } from 'lucide-react';
 import { useQuiz } from '@/hooks/useQuiz';
-import dynamic from 'next/dynamic';
-
-const ParticleBackground = dynamic(() => import('@/components/ParticleBackground'), {
-  ssr: false
-});
-
-const HolographicOverlay = dynamic(() => import('@/components/HolographicOverlay'), {
-  ssr: false
-});
 
 export default function CybersecurityQuiz() {
   const {
@@ -59,8 +50,8 @@ export default function CybersecurityQuiz() {
 
   const backgroundVariants = {
     default: 'from-[#0A2342] to-[#1A3B5C]',
-    success: 'from-[#004A2F] to-[#00703C]',
-    error: 'from-[#4A0000] to-[#700000]'
+    success: 'from-[#004A2F] to-[#00703C]', // Green gradient for success
+    error: 'from-[#4A0000] to-[#700000]' // Red gradient for error
   };
 
   const renderQuestionContent = () => (
@@ -181,10 +172,6 @@ export default function CybersecurityQuiz() {
         relative
       `}
     >
-      {/* Background Elements */}
-      <ParticleBackground />
-      <HolographicOverlay />
-
       <div className="max-w-2xl mx-auto relative z-10 pt-12">
         <motion.h1 
           initial={{ opacity: 0, y: -20 }}
@@ -200,4 +187,3 @@ export default function CybersecurityQuiz() {
     </motion.div>
   );
 }
-

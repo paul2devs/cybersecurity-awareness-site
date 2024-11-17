@@ -18,7 +18,7 @@ export const threats: Threat[] = [
     icon: '🎣',
     image: '/threats/phishing.jpg',
     preventionId: '4',
-    category: "",
+    category: "Social",
     severity: 0
   },
   {
@@ -38,7 +38,7 @@ export const threats: Threat[] = [
     icon: '🦠',
     image: '/threats/malware.jpeg',
     preventionId: '11',
-    category: "",
+    category: "Advanced", 
     severity: 0
   },
   {
@@ -58,7 +58,7 @@ export const threats: Threat[] = [
     icon: '🎭',
     image: '/threats/social_engineering.jpg',
     preventionId: '6',
-    category: "",
+    category: "Social", 
     severity: 0
   },
   {
@@ -78,7 +78,7 @@ export const threats: Threat[] = [
     icon: '💰',
     image: '/threats/ransomware.jpg',
     preventionId: '7',
-    category: "",
+    category: "Advanced", 
     severity: 0
   },
   {
@@ -98,7 +98,7 @@ export const threats: Threat[] = [
     icon: '🌐',
     image: '/threats/ddos.jpg',
     preventionId: '8',
-    category: "",
+    category: "Network", 
     severity: 0
   },
   {
@@ -118,7 +118,7 @@ export const threats: Threat[] = [
     icon: '💻',
     image: '/threats/sql_injection.jpg',
     preventionId: '9',
-    category: "",
+    category: "Advanced", 
     severity: 0
   },
   {
@@ -138,7 +138,7 @@ export const threats: Threat[] = [
     icon: '🕵️‍♂️',
     image: '/threats/insider_threat.jpg',
     preventionId: '10',
-    category: "",
+    category: "Social", 
     severity: 0
   },
   {
@@ -158,7 +158,7 @@ export const threats: Threat[] = [
     icon: '⏳',
     image: '/threats/zero_day.jpg',
     preventionId: '3',
-    category: "",
+    category: "Advanced", 
     severity: 0
   },
   {
@@ -178,7 +178,7 @@ export const threats: Threat[] = [
     icon: '🔍',
     image: '/threats/mitm.jpg',
     preventionId: '5',
-    category: "",
+    category: "Network", 
     severity: 0
   },
   {
@@ -198,7 +198,7 @@ export const threats: Threat[] = [
     icon: '💻💰',
     image: '/threats/cryptojacking.jpg',
     preventionId: '38',
-    category: "",
+    category: "Advanced", 
     severity: 0
   },
   {
@@ -218,7 +218,7 @@ export const threats: Threat[] = [
     icon: '🔑',
     image: '/threats/session_hijacking.jpg',
     preventionId: '23',
-    category: "",
+    category: "Social", 
     severity: 0
   },
   {
@@ -238,7 +238,7 @@ export const threats: Threat[] = [
     icon: '🤖',
     image: '/threats/botnets.jpg',
     preventionId: '8',
-    category: "",
+    category: "Network", 
     severity: 0
   },
   {
@@ -258,7 +258,7 @@ export const threats: Threat[] = [
     icon: '🖱️',
     image: '/threats/clickjacking.png',
     preventionId: '23',
-    category: "",
+    category: "Social", 
     severity: 0
   },
   {
@@ -278,7 +278,7 @@ export const threats: Threat[] = [
     icon: '📢',
     image: '/threats/malvertising.jpg',
     preventionId: '4',
-    category: "",
+    category: "Advanced", 
     severity: 0
   },
   {
@@ -298,7 +298,7 @@ export const threats: Threat[] = [
     icon: '🤑',
     image: '/threats/yahoo_scam.jpg',
     preventionId: '6',
-    category: "",
+    category: "Social", 
     severity: 0
   },
   {
@@ -316,9 +316,9 @@ export const threats: Threat[] = [
       'Loss of control over phone number and communications',
     ],
     icon: '📲',
-    image: '/threats/sim swapping.png',
+    image: '/threats/sim_swapping.png',
     preventionId: '2',
-    category: "",
+    category: "Social", 
     severity: 0
   },
   {
@@ -338,7 +338,7 @@ export const threats: Threat[] = [
     icon: '📝',
     image: '/threats/formjacking.jpg',
     preventionId: '9',
-    category: "",
+    category: "Advanced", 
     severity: 0
   },
   {
@@ -358,7 +358,7 @@ export const threats: Threat[] = [
     icon: '🌐',
     image: '/threats/dns_spoofing.jpg',
     preventionId: '5',
-    category: "",
+    category: "Network", 
     severity: 0
   },
   {
@@ -378,7 +378,7 @@ export const threats: Threat[] = [
     icon: '🌈',
     image: '/threats/rainbow_table.jpg',
     preventionId: '1',
-    category: "",
+    category: "Advanced", 
     severity: 0
   },
   {
@@ -398,7 +398,7 @@ export const threats: Threat[] = [
     icon: '💼',
     image: '/threats/bec.jpg',
     preventionId: '14',
-    category: "",
+    category: "Social", 
     severity: 0
   },
   {
@@ -418,7 +418,7 @@ export const threats: Threat[] = [
     icon: '✍️',
     image: '/threats/typosquatting.jpg',
     preventionId: '4',
-    category: "",
+    category: "Social", 
     severity: 0
   },
   {
@@ -438,7 +438,7 @@ export const threats: Threat[] = [
     icon: '🔑',
     image: '/threats/session_fixation.jpg',
     preventionId: '9',
-    category: "",
+    category: "Social", 
     severity: 0
   },
   {
@@ -458,7 +458,7 @@ export const threats: Threat[] = [
     icon: '🔋',
     image: '/threats/juice_jacking.jpg',
     preventionId: '13',
-    category: "",
+    category: "Physical", 
     severity: 0
   },
   {
@@ -478,7 +478,7 @@ export const threats: Threat[] = [
     icon: '🔐',
     image: '/threats/cryptographic_attack.jpg',
     preventionId: '16',
-    category: "",
+    category: "Advanced", 
     severity: 0
   },
   {
@@ -491,14 +491,14 @@ export const threats: Threat[] = [
       'Common in forums, comment sections, and untrusted inputs',
     ],
     impacts: [
-      'User data theft',
+      'User  data theft',
       'Session hijacking',
       'Loss of trust in affected website',
     ],
     icon: '🔓',
     image: '/threats/xss.jpg',
     preventionId: '23',
-    category: "",
+    category: "Advanced", 
     severity: 0
   },
   {
@@ -518,7 +518,7 @@ export const threats: Threat[] = [
     icon: '🔨',
     image: '/threats/brute_force.jpg',
     preventionId: '1',
-    category: "",
+    category: "Advanced", 
     severity: 0
   },
   {
@@ -538,7 +538,7 @@ export const threats: Threat[] = [
     icon: '👂',
     image: '/threats/eavesdropping.jpg',
     preventionId: '5',
-    category: "",
+    category: "Network", 
     severity: 0
   },
   {
@@ -547,7 +547,7 @@ export const threats: Threat[] = [
     shortDescription: 'Exploiting vulnerabilities to gain higher access permissions',
     details: [
       'Attackers exploit flaws to gain elevated privileges',
-      "Can be vertical (higher permissions) or horizontal (another user's privileges)",
+      " Can be vertical (higher permissions) or horizontal (another user's privileges)",
       'Common in poorly configured systems',
     ],
     impacts: [
@@ -558,7 +558,7 @@ export const threats: Threat[] = [
     icon: '📈',
     image: '/threats/privilege_escalation.jpg',
     preventionId: '12',
-    category: "",
+    category: "Advanced", 
     severity: 0
   },
   {
@@ -578,7 +578,7 @@ export const threats: Threat[] = [
     icon: '🔑',
     image: '/threats/credential_stuffing.jpg',
     preventionId: '1',
-    category: "",
+    category: "Social", 
     severity: 0
   },
   {
@@ -598,7 +598,7 @@ export const threats: Threat[] = [
     icon: '🔍',
     image: '/threats/spyware.jpg',
     preventionId: '11',
-    category: "",
+    category: "Advanced", 
     severity: 0
   },
   {
@@ -618,7 +618,7 @@ export const threats: Threat[] = [
     icon: '🪱',
     image: '/threats/worm.jpg',
     preventionId: '8',
-    category: "",
+    category: "Network", 
     severity: 0
   },
   {
@@ -638,7 +638,7 @@ export const threats: Threat[] = [
     icon: '💾',
     image: '/threats/drive_by_download.jpg',
     preventionId: '3',
-    category: "",
+    category: "Advanced", 
     severity: 0
   },
 ];

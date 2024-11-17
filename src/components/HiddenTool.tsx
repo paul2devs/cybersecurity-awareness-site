@@ -154,7 +154,7 @@ export default function HiddenTool({ tool }: { tool: Tool }) {
         <div className="flex items-center space-x-2 mb-4">
           <Lock className="w-6 h-6 text-red-500" />
           <p className="text-gray-300">
-            Access denied: This tool is not available publicly. Contact <strong>paul2dev</strong> to access.
+            Access denied: This tool is not available publicly. Contact <strong>paul2dev</strong> on WhatsApp to access.
           </p>
         </div>
         <div className="flex space-x-4">
