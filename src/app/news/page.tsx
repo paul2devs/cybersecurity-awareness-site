@@ -47,6 +47,7 @@ export default function NewsPage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [filter, setFilter] = useState<'ALL' | 'LOW' | 'MEDIUM' | 'HIGH' | 'CRITICAL'>('ALL');
   const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
+  const [isClient, setIsClient] = useState(false);
 
   const loadNews = useCallback(async () => {
     try {
@@ -69,6 +70,10 @@ export default function NewsPage() {
     loadNews();
   }, [loadNews]);
 
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
   const filteredNews = news.filter(item => 
     (filter === 'ALL' || item.threat_level === filter) &&
     item.title.toLowerCase().includes(searchTerm.toLowerCase())
@@ -81,7 +86,7 @@ export default function NewsPage() {
         <motion.div 
           className="text-center mb-8 sm:mb-12"
           initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
+          animate={{ opacity: 1, y : 0 }}
           transition={{ duration: 0.5 }}
         >
           <motion.div
@@ -116,7 +121,7 @@ export default function NewsPage() {
 
           {/* Search and Filter Section */}
           <AnimatePresence>
-            {(isMobileFilterOpen || window.innerWidth >= 640) && (
+            {(isMobileFilterOpen || (isClient && typeof window !== 'undefined' && window.innerWidth >= 640)) && (
               <motion.div
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: 'auto' }}
@@ -155,7 +160,7 @@ export default function NewsPage() {
           <LoadingSkeleton />
         ) : (
           <>
-            {filteredNews.length >  0 ? (
+            {filteredNews.length > 0 ? (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                 {filteredNews.map((item) => (
                   <NewsCard key={item.id} news={item} />

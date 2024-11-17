@@ -72,6 +72,9 @@ export default function RootLayout({
       lang="en" 
       className={`${inter.variable} scroll-smooth antialiased`}
     >
+      <head>
+        <link rel="icon" href="/favicon.ico" />
+      </head>
       <body 
         className="
           min-h-screen 
@@ -92,7 +95,7 @@ export default function RootLayout({
           </main>
           <Footer />
         </div>
-        <GoogleAnalytics gaId="G-3WQFFFHG73" />
+        <GoogleAnalytics gaId=" UA-XXXXXXXXX-X" />
       </body>
     </html>
   )
