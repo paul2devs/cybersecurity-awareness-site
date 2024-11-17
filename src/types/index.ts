@@ -1,5 +1,24 @@
 
 
+export interface IncidentReport {
+  type: string;
+  date: string;
+  time: string;
+  description: string;
+  impact: string;
+  actions: string;
+  severity: IncidentSeverity;
+  affectedSystems: string[];
+  witnesses: string;
+  evidenceAttached: boolean;
+  personName: string;
+  companyName: string;
+  phoneCountryCode: string;
+  phoneNumber: string;
+  email: string;
+  evidenceFile: File | null;
+}
+
 export interface Threat {
   severity: number;
   category: string;

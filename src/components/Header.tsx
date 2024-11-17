@@ -123,17 +123,15 @@ export default function Header() {
             >
               <Image
                 src="/images/logos.png"
- alt="paul2dev logo"
+                alt="Cybersecurity Logo"
                 width={50}
                 height={50}
                 className="w-12 h-12 rounded-full border-2 border-cyan-500/50"
               />
             </motion.div>
-            <span className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600">
-              Paul2Dev
-            </span>
           </Link>
 
+          {/* Rest of the code remains the same */}
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-6">
             {MENU_ITEMS.map((link) => {
@@ -213,5 +211,5 @@ export default function Header() {
         </AnimatePresence>
       </motion.header>
     </>
-  );
+  ); 
 }

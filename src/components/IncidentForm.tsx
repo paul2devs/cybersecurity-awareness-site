@@ -13,7 +13,7 @@ import { IncidentReport, IncidentSeverity } from '@/types';
 import { reportIncident } from '@/lib/api';
 import { incidentTypes, severityLevels } from '@/lib/data';
 
-export const IncidentForm: React.FC = () => {
+export function IncidentForm() {
   const [formData, setFormData] = useState<IncidentReport>({
     type: '',
     date: '',
@@ -156,6 +156,37 @@ export const IncidentForm: React.FC = () => {
               </div>
             </div>
 
+            {/* Date and Time */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label htmlFor="date" className="block text-sm font-medium mb-2 text-[#4ecdc4]">
+                  Date of Incident
+                </label>
+                <Input
+                  id="date"
+                  name="date"
+                  type="date"
+                  value={formData.date}
+                  onChange={handleInputChange}
+                  required
+                  className="bg-[#2c3e5a] text-white border-[#4ecdc4]/30 focus:border-[#4ecdc4] focus:ring-[#4ecdc4]"
+                />
+              </div>
+              <div>
+                <label htmlFor="time" className="block text-sm font-medium mb-2 text-[#4ecdc4]">
+                  Time of Incident
+                </label>
+                <Input
+                  id="time"
+                  name="time"
+                  type="time"
+                  value={formData.time}
+                  onChange={handleInputChange}
+                  required
+                  className="bg-[#2c3e5a] text-white border-[#4ecdc4]/30 focus:border-[#4ecdc4] focus:ring-[#4ecdc4]"
+                />
+              </div>
+            </div>
             
             {/* Personal Information Fields */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -253,6 +284,32 @@ export const IncidentForm: React.FC = () => {
               />
             </div>
 
+            {/* New Fields: Affected Systems and Witnesses */}
+            <div>
+              <label htmlFor="affectedSystems" className="block text-sm font-medium mb-2 text-[#4ecdc4]">
+                Affected Systems
+              </label>
+              <Textarea
+                id="affectedSystems"
+                name="affectedSystems"
+                value={formData.affectedSystems}
+                onChange={handleInputChange}
+                className="bg-[#2c3e5a] text-white border-[#4ecdc4]/30 focus:border-[#4ecdc4] focus:ring-[#4ecdc4]"
+              />
+            </div>
+            <div>
+              <label htmlFor="witnesses" className="block text-sm font-medium mb-2 text-[#4ecdc4]">
+                Witnesses
+              </label>
+              <Textarea
+                id="witnesses"
+                name="witnesses"
+                value={formData.witnesses}
+                onChange={handleInputChange}
+                className="bg-[#2c3e5a] text-white border-[#4ecdc4]/30 focus:border-[#4ecdc4] focus:ring-[#4ecdc4]"
+              />
+            </div>
+
             {/* File Upload  */}
             <div>
               <label htmlFor="evidenceFile" className="block text-sm font-medium mb-2 text-[#4ecdc4]">
@@ -283,11 +340,10 @@ export const IncidentForm: React.FC = () => {
               />
             </div>
 
-
             {/* Error Alert */}
             {error && (
               <Alert variant="destructive" className="bg-red-900 border-red-500">
- <AlertTriangle className="w-4 h-4 text-red-400" />
+                <AlertTriangle className="w-4 h-4 text-red-400" />
                 <AlertTitle className="text-red-300">Error</AlertTitle>
                 <AlertDescription className="text-red-200">{error}</AlertDescription>
               </Alert>
@@ -304,4 +360,4 @@ export const IncidentForm: React.FC = () => {
       </Card>
     </div>
   );
-};
+}

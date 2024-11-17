@@ -1210,3 +1210,13 @@ export const severityLevels = [
   { value: 'medium', label: 'Medium', color: 'text-yellow-500' },
   { value: 'low', label: 'Low', color: 'text-green-500' },
 ] as const
+
+
+export const affectedSystemsList = [
+  { value: 'network', label: 'Network Infrastructure' },
+  { value: 'database', label: 'Database Systems' },
+  { value: 'application', label: 'Web/Mobile Applications' },
+  { value: 'hardware', label: 'Hardware Systems' },
+  { value: 'cloud', label: 'Cloud Services' },
+  { value: 'other', label: 'Other Systems' },
+];

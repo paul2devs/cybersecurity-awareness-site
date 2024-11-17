@@ -18,13 +18,14 @@ export async function POST(request: NextRequest) {
     const transporter = nodemailer.createTransport({
       host: smtpHost,
       port: smtpPort,
-      secure: smtpPort === 465, // true for 465, false for other ports
+      secure: smtpPort === 465, 
       auth: {
         user: smtpUser ,
         pass: smtpPassword,
       },
       tls: {
-        rejectUnauthorized: false, 
+        rejectUnauthorized: false,
+      }, 
     });
 
     await transporter.sendMail({
