@@ -7,30 +7,28 @@ export async function POST(request: NextRequest) {
 
     const smtpHost = process.env.SMTP_HOST;
     const smtpPort = parseInt(process.env.SMTP_PORT || '587');
-    const smtpUser = process.env.SMTP_USER;
+    const smtpUser  = process.env.SMTP_USER;
     const smtpPassword = process.env.SMTP_PASSWORD;
     const adminEmail = process.env.ADMIN_EMAIL;
 
-    if (!smtpHost || !smtpPort || !smtpUser || !smtpPassword || !adminEmail) {
+    if (!smtpHost || !smtpPort || !smtpUser  || !smtpPassword || !adminEmail) {
       throw new Error('Missing required environment variables');
     }
 
     const transporter = nodemailer.createTransport({
       host: smtpHost,
       port: smtpPort,
-      secure: smtpPort === 465, 
+      secure: smtpPort === 465, // true for 465, false for other ports
       auth: {
-        user: smtpUser,
+        user: smtpUser ,
         pass: smtpPassword,
       },
       tls: {
         rejectUnauthorized: false, 
-      },
     });
 
-    
     await transporter.sendMail({
-      from: smtpUser,
+      from: smtpUser ,
       to: adminEmail,
       subject,
       text,

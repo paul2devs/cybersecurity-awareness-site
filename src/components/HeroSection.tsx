@@ -68,8 +68,7 @@ const HeroSection: React.FC = () => {
             variants={itemVariants}
             className="text-base sm:text-lg md:text-xl text-light-gray font-medium"
           >
-            Empower yourself with cutting-edge cybersecurity knowledge, 
-            real-time threat detection, and proactive protection strategies.
+            Stay instantly protected from cyber threats with our powerful web solutions
           </motion.p>
 
           <motion.div 

@@ -120,8 +120,7 @@ export default function HiddenTool({ tool }: { tool: Tool }) {
 
         {/* Key Features */}
         <motion.div 
-          variants 
-          ={itemVariants}
+ variants={itemVariants}
           className="bg-[#2c3e50] p-4 rounded-lg"
         >
           <h3 className="text-lg font-bold text-white flex items-center justify-between">
@@ -154,12 +153,14 @@ export default function HiddenTool({ tool }: { tool: Tool }) {
         <div className="flex items-center space-x-2 mb-4">
           <Lock className="w-6 h-6 text-red-500" />
           <p className="text-gray-300">
-            Access denied: This tool is not available publicly. Contact <strong>paul2dev</strong> on WhatsApp to access.
+            Access denied: This tool is not available publicly. Contact 
+            <span className="font-bold text-[#40CFEA]"> paul2dev </span>
+            on WhatsApp to access.
           </p>
         </div>
         <div className="flex space-x-4">
           <a 
-            href={`https://wa.me/07068578749?text=Interested in ${tool.name}`}
+            href={`https://wa.me/+2347068578749?text=Interested in ${tool.name}`}
             className="flex-1 bg-green-600 hover:bg-green-700 text-white 
             py-3 rounded-lg flex items-center justify-center space-x-2 
             transition-all duration-300 transform hover:scale-[1.02]"

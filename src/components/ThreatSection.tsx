@@ -9,7 +9,8 @@ import {
   Code, 
   Network, 
   Layers, 
-  X 
+  X,
+  Info
 } from 'lucide-react';
 
 // Type definition for Threat
@@ -88,6 +89,7 @@ const severityColors = {
   Low: 'bg-green-500/20 text-green-400'
 };
 
+
 const ThreatsSection: React.FC = () => {
   const [selectedThreat, setSelectedThreat] = useState<ThreatType | null>(null);
   const [modalPosition, setModalPosition] = useState<{ top: number; left: number; width: number }>({
@@ -140,6 +142,7 @@ const ThreatsSection: React.FC = () => {
     setSelectedThreat(null);
   };
 
+
   return (
     <div className="container mx-auto px-4 py-12 relative">
       {/* Section Header */}
@@ -172,17 +175,117 @@ const ThreatsSection: React.FC = () => {
               if (el) threatRefs.current[threat.id] = el;
             }}
             initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            whileHover={{ scale: 1.05 }}
+            animate={{ 
+              opacity: 1, 
+              scale: 1,
+              boxShadow: selectedThreat?.id === threat.id 
+                ? '0 0 15px rgba(49, 208, 170, 0.5)' 
+                : '0 0 10px rgba(255,255,255,0.1)'
+            }}
+            whileHover={{ 
+              scale: 1.05,
+              boxShadow: '0 0 15px rgba(49, 208, 170, 0.3)',
+              transition: { 
+                duration: 0.3,
+                type: "spring",
+                stiffness: 300
+              }
+            }}
             onClick={(e) => handleThreatClick(threat, e.currentTarget)}
             className={`
-              bg-steel-gray/30 rounded-xl p-4 sm:p-6 cursor-pointer 
-              transition-all duration-300 hover:bg-steel-gray/50
-              ${selectedThreat?.id === threat.id ? 'border-2 border-electric-blue' : ''}
+              group
+              bg-steel-gray/30 
+              rounded-xl 
+              p-4 sm:p-6 
+              cursor-pointer 
+              transition-all 
+              duration-300 
+              hover:bg-steel-gray/50
               relative
+              overflow-hidden
+              ${selectedThreat?.id === threat.id ? 'border-2 border-electric-blue' : ''}
             `}
           >
-            {/* Threat Card Content */}
+            {/* Interactive Hint */}
+            <div className="absolute inset-0 pointer-events-none">
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ 
+                  opacity: [0, 0.3, 0],
+                  scale: [1, 1.2, 1.4],
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+                className="absolute inset-0 bg-electric-blue/20 rounded-xl"
+              />
+            </div>
+
+            {/* Info Badge */}
+            <div className="absolute top-2 right-2 z-10">
+              <motion.div
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ 
+                  scale: [0.8, 1.1, 1],
+                  opacity: [0, 1, 1],
+                  rotate: [0, 10, -10, 0]
+                }}
+                transition={{
+                  duration: 1,
+                  repeat: Infinity,
+                  repeatDelay: 3
+                }}
+                className="
+                  bg-electric-blue 
+                  text-white 
+                  text-xs 
+                  px-2 
+                  py-1 
+                  rounded-full 
+                  shadow-lg
+                  flex items-center gap-1
+                "
+              >
+                <Info size={12} />
+                Details
+              </motion.div>
+            </div>
+
+            {/* Tooltip Hint */}
+            <div 
+              className="
+                group/tooltip 
+                absolute 
+                inset-0 
+                pointer-events-none
+              "
+            >
+              <div 
+                className="
+                  hidden 
+                  group-hover/tooltip:block 
+                  absolute 
+                  bottom-2 
+                  left-1/2 
+                  transform 
+                  -translate-x-1/2 
+                  bg-black/70 
+                  text-white 
+                  text-xs 
+                  px-3 
+                  py-1 
+                  rounded-full 
+                  transition-all 
+                  duration-300
+                "
+              >
+                Tap to Explore Threat Details
+              </div>
+            </div>
+
+            {/* Existing Card Content */}
             <div className={`mb-3 sm:mb-4 ${threat.color}`}>
               {React.cloneElement(threat.icon, { 
                 className: 'w-6 h-6 sm:w-8 sm:h-8' 
@@ -195,7 +298,7 @@ const ThreatsSection: React.FC = () => {
                 preserve-color
               `}
             >
-              { threat.title}
+              {threat.title}
             </h3>
             <div className="flex justify-between items-center">
               <span 
@@ -211,7 +314,25 @@ const ThreatsSection: React.FC = () => {
         ))}
       </div>
 
-      {/* Modal for Selected Threat */}
+      {/* Keyboard Accessibility Hint */}
+      <div className="text-center mt-4 text-sm text-gray-400">
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ 
+            opacity: [0, 1, 1, 0],
+            y: [10, 0, 0, -10]
+          }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            repeatDelay: 5
+          }}
+        >
+          💡 Tip: Use keyboard or click to explore threats
+        </motion.p>
+      </div>
+
+      {/* Existing Modal Code (Unchanged) */}
       <AnimatePresence>
         {selectedThreat && (
           <motion.div
