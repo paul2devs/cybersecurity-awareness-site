@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { GoogleAnalytics } from '@next/third-parties/google'
 
+import { Analytics } from "@vercel/analytics/react"
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import './globals.css'
@@ -58,7 +59,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: 'your-google-site-verification-code', // Optional
+    google: 'your-google-site-verification-code', 
   },
 }
 
@@ -95,6 +96,7 @@ export default function RootLayout({
           </main>
           <Footer />
         </div>
+        <Analytics />
         <GoogleAnalytics gaId=" UA-XXXXXXXXX-X" />
       </body>
     </html>

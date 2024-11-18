@@ -44,7 +44,7 @@ export default function AssessmentPage() {
       }
       setIsAnimating(false);
     }, 300); 
-  }; // <-- Closing brace added here
+  }; 
 
   const handleSubmit = async () => {
     const assessmentResult = await submitAssessment(answers);
